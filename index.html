@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PIVOT — Property Intelligent Visit Offline Tool</title>
-    <meta name="description" content="PIVOT : l'outil mobile tout-en-un pour vos visites immobilières. 100% hors-ligne, zero-knowledge, achat unique.">
+    <title>FlowForges — Des outils intelligents pour les pros qui bougent</title>
+    <meta name="description" content="FlowForges : apps mobiles offline-first et automatisations sur mesure pour les professionnels. PIVOT, notre app phare pour les visites immobilières.">
     <meta name="theme-color" content="#358A9F">
-    <meta property="og:title" content="PIVOT — Vos visites. Vos données. Point.">
-    <meta property="og:description" content="Application mobile offline-first pour les professionnels de l'immobilier. Photos, checklists, notes audio, rapports PDF.">
+    <meta property="og:title" content="FlowForges — Apps & Automatisations pour professionnels">
+    <meta property="og:description" content="Apps mobiles offline-first et automatisations sur mesure. PIVOT : l'outil de visite immobilière tout-en-un.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hamsterjoevial.github.io/flowforges-site/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,9 +40,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         html { scroll-behavior: smooth; }
-
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg);
@@ -53,859 +51,458 @@
 
         /* ─── NAV ─── */
         .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
             background: rgba(246,247,250,0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-light);
             transition: box-shadow 0.3s;
         }
         .nav.scrolled { box-shadow: var(--shadow-sm); }
         .nav-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 60px;
+            max-width: 1100px; margin: 0 auto; padding: 0 1.5rem;
+            display: flex; align-items: center; justify-content: space-between; height: 60px;
         }
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
+        .nav-brand {
+            display: flex; align-items: center; gap: 0.6rem;
+            text-decoration: none; color: var(--text);
         }
-        .nav-logo img {
-            height: 32px;
-            width: auto;
+        .nav-brand-icon {
+            width: 32px; height: 32px; background: var(--primary);
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            color: #fff; font-weight: 800; font-size: 0.9rem;
+            font-family: 'JetBrains Mono', monospace;
         }
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
+        .nav-brand-text {
+            font-weight: 700; font-size: 1.05rem; letter-spacing: -0.5px;
         }
+        .nav-links { display: flex; align-items: center; gap: 1.5rem; }
         .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.88rem;
-            font-weight: 500;
-            transition: color 0.2s;
+            color: var(--text-secondary); text-decoration: none;
+            font-size: 0.88rem; font-weight: 500; transition: color 0.2s;
         }
         .nav-links a:hover { color: var(--primary); }
         .lang-btn {
-            background: var(--surface-alt);
-            border: 1px solid var(--border);
-            color: var(--text-secondary);
-            padding: 0.3rem 0.7rem;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            font-family: 'JetBrains Mono', monospace;
-            transition: all 0.2s;
+            background: var(--surface-alt); border: 1px solid var(--border);
+            color: var(--text-secondary); padding: 0.3rem 0.7rem; border-radius: 6px;
+            font-size: 0.8rem; font-weight: 600; cursor: pointer;
+            font-family: 'JetBrains Mono', monospace; transition: all 0.2s;
         }
         .lang-btn:hover { border-color: var(--primary); color: var(--primary); }
         .nav-mobile-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
+            display: none; background: none; border: none; cursor: pointer; padding: 0.5rem;
         }
         .nav-mobile-toggle span {
-            display: block;
-            width: 22px;
-            height: 2px;
-            background: var(--text);
-            margin: 5px 0;
-            transition: all 0.3s;
+            display: block; width: 22px; height: 2px; background: var(--text);
+            margin: 5px 0; transition: all 0.3s;
         }
 
         /* ─── HERO ─── */
         .hero {
-            padding: 8rem 1.5rem 4rem;
-            text-align: center;
+            padding: 8rem 1.5rem 4rem; text-align: center;
             background: linear-gradient(180deg, var(--primary-light) 0%, var(--bg) 100%);
+            position: relative; overflow: hidden;
         }
+        .hero > * { position: relative; z-index: 2; }
         .hero-badge {
-            display: inline-block;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            padding: 0.4rem 1rem;
-            font-size: 0.78rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            display: inline-block; background: var(--surface); border: 1px solid var(--border);
+            border-radius: 100px; padding: 0.4rem 1rem; font-size: 0.78rem;
+            font-weight: 500; color: var(--text-secondary); margin-bottom: 1.5rem;
             box-shadow: var(--shadow-sm);
         }
         .hero-badge span { color: var(--success); }
-        .hero-logo {
-            display: block;
-            width: clamp(250px, 45vw, 420px);
-            height: auto;
-            margin: 0 auto 1rem;
-            filter: drop-shadow(0 0 40px rgba(53,138,159,0.25)) drop-shadow(0 0 80px rgba(53,138,159,0.1));
+        .hero-brand {
+            font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 800;
+            color: var(--text); letter-spacing: -1px; margin-bottom: 0.5rem;
         }
-        .hero-subtitle {
-            font-size: 0.95rem;
-            color: var(--text-tertiary);
-            font-family: 'JetBrains Mono', monospace;
-            letter-spacing: 1px;
-            margin-bottom: 1.5rem;
-        }
+        .hero-brand-accent { color: var(--primary); }
         .hero-tagline {
-            font-size: clamp(1.2rem, 3vw, 1.6rem);
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 2.5rem;
-            line-height: 1.4;
+            font-size: clamp(1rem, 2.5vw, 1.25rem); font-weight: 500;
+            color: var(--text-secondary); margin-bottom: 2.5rem; max-width: 600px;
+            margin-left: auto; margin-right: auto;
         }
+        .sys-status {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+            color: var(--text-tertiary); letter-spacing: 1px; margin-top: 1rem;
+        }
+        .sys-status-dot {
+            width: 6px; height: 6px; background: var(--success);
+            border-radius: 50%; animation: status-blink 2s ease-in-out infinite;
+        }
+        @keyframes status-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-        /* ─── PILLARS ─── */
+        /* ─── PILLARS (FlowForges) ─── */
         .pillars {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1rem;
-            max-width: 960px;
-            margin: 0 auto 3rem;
-            padding: 0 1rem;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem; max-width: 800px; margin: 0 auto 3rem; padding: 0 1rem;
         }
         .pillar {
-            background: var(--surface);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: var(--shadow-sm);
-            transition: transform 0.2s, box-shadow 0.2s;
+            background: var(--surface); border: 1px solid var(--border-light);
+            border-radius: var(--radius); padding: 2rem; text-align: center;
+            box-shadow: var(--shadow-sm); transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
         }
-        .pillar:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
+        .pillar:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
         .pillar-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--primary-light);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 0.8rem;
-            font-size: 1.3rem;
+            width: 48px; height: 48px; background: var(--primary-light);
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 0.8rem; font-size: 1.3rem; position: relative;
         }
         .pillar h3 {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--primary);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 0.4rem;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--primary); letter-spacing: 1.5px;
+            text-transform: uppercase; margin-bottom: 0.4rem;
         }
-        .pillar p {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
+        .pillar p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
 
         /* ─── SECTIONS ─── */
-        .section {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 4rem 1.5rem;
-        }
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
+        .section { max-width: 1100px; margin: 0 auto; padding: 4rem 1.5rem; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
         .section-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--accent);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+            font-weight: 700; color: var(--accent); letter-spacing: 2px;
+            text-transform: uppercase; margin-bottom: 0.5rem;
         }
         .section-title {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            font-weight: 800;
-            color: var(--text);
-            margin-bottom: 0.5rem;
+            font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800;
+            color: var(--text); margin-bottom: 0.5rem;
         }
         .section-desc {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
+            font-size: 1rem; color: var(--text-secondary);
+            max-width: 600px; margin: 0 auto;
+        }
+
+        /* ─── PRODUCT HIGHLIGHT ─── */
+        .product-highlight {
+            background: var(--surface); border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg); padding: 3rem 2rem; text-align: center;
+            box-shadow: var(--shadow-md); max-width: 900px; margin: 0 auto 2rem;
+            position: relative; overflow: hidden;
+        }
+        .product-highlight::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+            background-size: 200% 100%; animation: gradient-shift 4s ease infinite;
+        }
+        .product-logo {
+            display: block; width: clamp(180px, 35vw, 320px); height: auto;
+            margin: 0 auto 0.5rem;
+            filter: drop-shadow(0 0 30px rgba(53,138,159,0.2));
+        }
+        .product-subtitle {
+            font-size: 0.85rem; color: var(--text-tertiary);
+            font-family: 'JetBrains Mono', monospace; letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+        }
+        .product-tagline {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem); font-weight: 700;
+            color: var(--text); margin-bottom: 1rem;
+        }
+        .product-desc {
+            font-size: 0.95rem; color: var(--text-secondary); max-width: 550px;
+            margin: 0 auto 1.5rem; line-height: 1.7;
+        }
+        .product-pills {
+            display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap;
+        }
+        .product-pill {
+            background: var(--primary-light); color: var(--primary);
+            padding: 0.35rem 0.9rem; border-radius: 100px; font-size: 0.8rem;
+            font-weight: 600; border: 1px solid rgba(53,138,159,0.15);
         }
 
         /* ─── FEATURES ─── */
         .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;
         }
         .feature-card {
-            background: var(--surface);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius);
-            padding: 2rem;
-            box-shadow: var(--shadow-sm);
-            transition: transform 0.2s, box-shadow 0.2s;
+            background: var(--surface); border: 1px solid var(--border-light);
+            border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow-sm);
+            transition: transform 0.2s, box-shadow 0.2s; position: relative;
         }
-        .feature-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
+        .feature-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
         .feature-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
+            width: 44px; height: 44px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; margin-bottom: 1rem; position: relative;
         }
         .feature-icon.cyan { background: var(--primary-light); }
         .feature-icon.gold { background: var(--accent-light); }
-        .feature-card h3 {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 0.5rem;
-        }
-        .feature-card p {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
+        .feature-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+        .feature-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
 
         /* ─── USE CASES ─── */
         .usecases-bg {
             background: var(--surface);
-            border-top: 1px solid var(--border-light);
-            border-bottom: 1px solid var(--border-light);
+            border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);
         }
         .usecase-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;
         }
         .usecase-card {
-            background: var(--bg);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius);
-            padding: 1.8rem;
-            position: relative;
-            overflow: hidden;
+            background: var(--bg); border: 1px solid var(--border-light);
+            border-radius: var(--radius); padding: 1.8rem; position: relative; overflow: hidden;
         }
         .usecase-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+            background-size: 200% 100%; animation: gradient-shift 4s ease infinite;
         }
         .usecase-number {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--primary);
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+            font-weight: 700; color: var(--primary); letter-spacing: 1px;
+            margin-bottom: 0.5rem; position: relative; display: inline-block;
         }
-        .usecase-card h3 {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 0.5rem;
-        }
-        .usecase-card p {
-            font-size: 0.88rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
+        .usecase-number::before { content: '>'; margin-right: 0.3rem; opacity: 0.5; }
+        .usecase-card h3 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+        .usecase-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
 
         /* ─── BENEFITS ─── */
         .benefits-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-            max-width: 900px;
-            margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem; max-width: 900px; margin: 0 auto;
         }
-        .benefit-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1rem;
-        }
+        .benefit-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1rem; }
         .benefit-check {
-            flex-shrink: 0;
-            width: 28px;
-            height: 28px;
-            background: var(--primary-light);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 0.85rem;
-            font-weight: 700;
+            flex-shrink: 0; width: 28px; height: 28px; background: var(--primary-light);
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            color: var(--primary); font-size: 0.85rem; font-weight: 700;
         }
-        .benefit-text h4 {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 0.2rem;
+        .benefit-text h4 { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.2rem; }
+        .benefit-text p { font-size: 0.85rem; color: var(--text-secondary); }
+
+        /* ─── SERVICES ─── */
+        .services-bg {
+            background: linear-gradient(180deg, var(--bg) 0%, var(--primary-light) 50%, var(--bg) 100%);
         }
-        .benefit-text p {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
+        .services-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem; max-width: 800px; margin: 0 auto;
+        }
+        .service-card {
+            background: var(--surface); border: 1px solid var(--border-light);
+            border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow-sm);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .service-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .service-icon {
+            width: 48px; height: 48px; background: var(--accent-light);
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; margin-bottom: 1rem;
+        }
+        .service-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+        .service-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+        .service-examples {
+            margin-top: 0.8rem; display: flex; flex-wrap: wrap; gap: 0.4rem;
+        }
+        .service-tag {
+            background: var(--bg); color: var(--text-tertiary);
+            padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem;
+            font-weight: 500; border: 1px solid var(--border-light);
         }
 
         /* ─── CTA ─── */
         .cta-section {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-radius: var(--radius-lg);
-            padding: 3rem 2rem;
-            text-align: center;
-            margin: 3rem auto;
-            max-width: 800px;
-            box-shadow: var(--shadow-lg);
+            border-radius: var(--radius-lg); padding: 3rem 2rem; text-align: center;
+            margin: 3rem auto; max-width: 800px; box-shadow: var(--shadow-lg);
+            position: relative; overflow: hidden;
         }
-        .cta-section h2 {
-            color: #fff;
-            font-size: 1.6rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-        }
-        .cta-section p {
-            color: rgba(255,255,255,0.85);
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        .cta-badges {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+        .cta-section > * { position: relative; z-index: 1; }
+        .cta-section h2 { color: #fff; font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem; }
+        .cta-section p { color: rgba(255,255,255,0.85); font-size: 1rem; margin-bottom: 1.5rem; }
+        .cta-badges { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
         .cta-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(255,255,255,0.15);
-            border: 1px solid rgba(255,255,255,0.25);
-            color: #fff;
-            padding: 0.7rem 1.3rem;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: background 0.2s;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
+            color: #fff; padding: 0.7rem 1.3rem; border-radius: 10px;
+            font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: background 0.2s;
         }
         .cta-badge:hover { background: rgba(255,255,255,0.25); }
 
         /* ─── PRIVACY ─── */
-        .privacy-section {
-            background: var(--surface);
-            border-top: 1px solid var(--border-light);
-        }
-        .privacy-inner {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 4rem 1.5rem;
-        }
+        .privacy-section { background: var(--surface); border-top: 1px solid var(--border-light); }
+        .privacy-inner { max-width: 800px; margin: 0 auto; padding: 4rem 1.5rem; }
         .privacy-lang-switch {
-            display: flex;
-            gap: 0.5rem;
-            justify-content: center;
-            margin-bottom: 2rem;
+            display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 2rem;
         }
         .privacy-lang-switch button {
-            background: var(--bg);
-            color: var(--text-secondary);
-            border: 1px solid var(--border);
-            padding: 0.4rem 1rem;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 500;
-            font-family: 'Inter', sans-serif;
-            transition: all 0.2s;
+            background: var(--bg); color: var(--text-secondary); border: 1px solid var(--border);
+            padding: 0.4rem 1rem; border-radius: 6px; cursor: pointer;
+            font-size: 0.85rem; font-weight: 500; font-family: 'Inter', sans-serif; transition: all 0.2s;
         }
         .privacy-lang-switch button.active {
-            color: var(--primary);
-            border-color: var(--primary);
-            background: var(--primary-light);
+            color: var(--primary); border-color: var(--primary); background: var(--primary-light);
         }
-        .privacy-content h3 {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--text);
-            margin: 1.5rem 0 0.5rem;
-        }
+        .privacy-content h3 { font-size: 1rem; font-weight: 700; color: var(--text); margin: 1.5rem 0 0.5rem; }
         .privacy-content p, .privacy-content li {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
+            font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7;
         }
         .privacy-content ul { padding-left: 1.5rem; margin: 0.5rem 0; }
         .privacy-content li { margin-bottom: 0.3rem; }
         .privacy-content strong { color: var(--text); }
-        .privacy-content table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-            font-size: 0.85rem;
-        }
+        .privacy-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem; }
         .privacy-content th, .privacy-content td {
-            border: 1px solid var(--border);
-            padding: 0.6rem 0.8rem;
-            text-align: left;
+            border: 1px solid var(--border); padding: 0.6rem 0.8rem; text-align: left;
         }
-        .privacy-content th {
-            background: var(--bg);
-            color: var(--text);
-            font-weight: 600;
-        }
+        .privacy-content th { background: var(--bg); color: var(--text); font-weight: 600; }
         .privacy-content td { color: var(--text-secondary); }
         .privacy-content a { color: var(--primary); }
 
         /* ─── CONTACT ─── */
         .contact-section {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 4rem 1.5rem;
-            text-align: center;
+            max-width: 600px; margin: 0 auto; padding: 4rem 1.5rem; text-align: center;
         }
         .contact-links {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
+            display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;
         }
         .contact-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 0.8rem 1.5rem;
-            border-radius: var(--radius);
-            font-size: 0.9rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.2s;
-            box-shadow: var(--shadow-sm);
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: var(--surface); border: 1px solid var(--border); color: var(--text);
+            padding: 0.8rem 1.5rem; border-radius: var(--radius); font-size: 0.9rem;
+            font-weight: 500; text-decoration: none; transition: all 0.2s; box-shadow: var(--shadow-sm);
         }
         .contact-link:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            box-shadow: var(--shadow-md);
+            border-color: var(--primary); color: var(--primary); box-shadow: var(--shadow-md);
         }
 
         /* ─── FOOTER ─── */
         footer {
-            text-align: center;
-            padding: 2rem 1.5rem;
-            color: var(--text-tertiary);
-            font-size: 0.8rem;
-            border-top: 1px solid var(--border-light);
+            text-align: center; padding: 2rem 1.5rem; color: var(--text-tertiary);
+            font-size: 0.8rem; border-top: 1px solid var(--border-light);
         }
         footer a { color: var(--text-secondary); text-decoration: none; }
         footer a:hover { color: var(--primary); }
+        .footer-links {
+            display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 0.8rem;
+        }
+        .footer-links a { font-size: 0.82rem; font-weight: 500; }
 
         /* ─── RESPONSIVE ─── */
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .nav-links.open {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                right: 0;
-                background: var(--surface);
-                border-bottom: 1px solid var(--border);
-                padding: 1rem;
-                gap: 1rem;
-                box-shadow: var(--shadow-md);
+                display: flex; flex-direction: column; position: absolute;
+                top: 60px; left: 0; right: 0; background: var(--surface);
+                border-bottom: 1px solid var(--border); padding: 1rem;
+                gap: 1rem; box-shadow: var(--shadow-md);
             }
             .nav-mobile-toggle { display: block; }
             .hero { padding: 6.5rem 1.5rem 3rem; }
-            .pillars { grid-template-columns: repeat(2, 1fr); }
+            .pillars { grid-template-columns: 1fr; }
             .features-grid { grid-template-columns: 1fr; }
             .usecase-grid { grid-template-columns: 1fr; }
             .benefits-list { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
             .cta-section { margin: 2rem 1rem; }
         }
 
-        @media (max-width: 480px) {
-            .pillars { grid-template-columns: 1fr; gap: 0.8rem; }
-            .pillar { padding: 1.2rem; }
-        }
-
         /* ─── WEYLAND EFFECTS ─── */
-
-        /* Scanline overlay on hero */
         .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(
-                0deg,
-                transparent,
-                transparent 2px,
-                rgba(53,138,159,0.02) 2px,
-                rgba(53,138,159,0.02) 4px
-            );
-            pointer-events: none;
-            z-index: 1;
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(53,138,159,0.02) 2px, rgba(53,138,159,0.02) 4px);
+            pointer-events: none; z-index: 1;
         }
-        .hero { position: relative; overflow: hidden; }
-        .hero > * { position: relative; z-index: 2; }
-
-        /* Animated scan line sweeping across hero */
         .hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
             background: linear-gradient(90deg, transparent 0%, var(--primary) 50%, transparent 100%);
-            opacity: 0.15;
-            z-index: 3;
-            animation: scanline-sweep 8s linear infinite;
-            pointer-events: none;
+            opacity: 0.15; z-index: 3; animation: scanline-sweep 8s linear infinite; pointer-events: none;
         }
-        @keyframes scanline-sweep {
-            0% { top: 0; }
-            100% { top: 100%; }
-        }
+        @keyframes scanline-sweep { 0% { top: 0; } 100% { top: 100%; } }
 
-        /* Dot grid pattern on body */
         body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
             background-image: radial-gradient(circle, var(--primary) 0.5px, transparent 0.5px);
-            background-size: 32px 32px;
-            opacity: 0.025;
-            pointer-events: none;
-            z-index: 0;
+            background-size: 32px 32px; opacity: 0.025; pointer-events: none; z-index: 0;
         }
 
-        /* HUD corner brackets on feature cards — all 4 corners */
-        .feature-card {
-            position: relative;
-        }
-        .feature-card::before,
-        .feature-card::after {
-            content: '';
-            position: absolute;
-            width: 18px;
-            height: 18px;
-            border-color: var(--primary);
-            border-style: solid;
-            opacity: 0.2;
+        .feature-card::before, .feature-card::after {
+            content: ''; position: absolute; width: 18px; height: 18px;
+            border-color: var(--primary); border-style: solid; opacity: 0.2;
             transition: opacity 0.3s, width 0.3s, height 0.3s;
         }
-        .feature-card::before {
-            top: 8px;
-            left: 8px;
-            border-width: 2px 0 0 2px;
-        }
-        .feature-card::after {
-            bottom: 8px;
-            right: 8px;
-            border-width: 0 2px 2px 0;
-        }
-        .feature-card:hover::before,
-        .feature-card:hover::after {
-            opacity: 0.6;
-            width: 24px;
-            height: 24px;
-        }
+        .feature-card::before { top: 8px; left: 8px; border-width: 2px 0 0 2px; }
+        .feature-card::after { bottom: 8px; right: 8px; border-width: 0 2px 2px 0; }
+        .feature-card:hover::before, .feature-card:hover::after { opacity: 0.6; width: 24px; height: 24px; }
 
-        /* Inner brackets via spans (added in JS) */
         .hud-bracket-tr, .hud-bracket-bl {
-            position: absolute;
-            width: 18px;
-            height: 18px;
-            border-color: var(--primary);
-            border-style: solid;
-            opacity: 0.2;
-            transition: opacity 0.3s;
-            pointer-events: none;
+            position: absolute; width: 18px; height: 18px;
+            border-color: var(--primary); border-style: solid; opacity: 0.2;
+            transition: opacity 0.3s; pointer-events: none;
         }
-        .hud-bracket-tr {
-            top: 8px;
-            right: 8px;
-            border-width: 2px 2px 0 0;
-        }
-        .hud-bracket-bl {
-            bottom: 8px;
-            left: 8px;
-            border-width: 0 0 2px 2px;
-        }
-        .feature-card:hover .hud-bracket-tr,
-        .feature-card:hover .hud-bracket-bl { opacity: 0.6; }
+        .hud-bracket-tr { top: 8px; right: 8px; border-width: 2px 2px 0 0; }
+        .hud-bracket-bl { bottom: 8px; left: 8px; border-width: 0 0 2px 2px; }
+        .feature-card:hover .hud-bracket-tr, .feature-card:hover .hud-bracket-bl { opacity: 0.6; }
 
-        /* HUD brackets on pillar cards - all corners */
-        .pillar {
-            position: relative;
-        }
         .pillar::before {
-            content: '';
-            position: absolute;
-            top: 6px;
-            right: 6px;
-            width: 14px;
-            height: 14px;
-            border-top: 2px solid var(--accent);
-            border-right: 2px solid var(--accent);
-            opacity: 0.2;
+            content: ''; position: absolute; top: 6px; right: 6px; width: 14px; height: 14px;
+            border-top: 2px solid var(--accent); border-right: 2px solid var(--accent); opacity: 0.2;
             transition: opacity 0.3s;
         }
         .pillar::after {
-            content: '';
-            position: absolute;
-            bottom: 6px;
-            left: 6px;
-            width: 14px;
-            height: 14px;
-            border-bottom: 2px solid var(--accent);
-            border-left: 2px solid var(--accent);
-            opacity: 0.2;
+            content: ''; position: absolute; bottom: 6px; left: 6px; width: 14px; height: 14px;
+            border-bottom: 2px solid var(--accent); border-left: 2px solid var(--accent); opacity: 0.2;
             transition: opacity 0.3s;
         }
         .pillar:hover::before, .pillar:hover::after { opacity: 0.6; }
-
-        /* Glow effect on logo handled by .hero-logo filter */
-
-        /* System status indicator in hero */
-        .sys-status {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            color: var(--text-tertiary);
-            letter-spacing: 1px;
-            margin-top: 1.5rem;
-        }
-        .sys-status-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--success);
-            border-radius: 50%;
-            animation: status-blink 2s ease-in-out infinite;
-        }
-        @keyframes status-blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        /* Tech divider lines */
-        .tech-divider {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.8rem;
-            margin: 3rem auto;
-            max-width: 400px;
-            padding: 0 1rem;
-        }
-        .tech-divider::before,
-        .tech-divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
-            opacity: 0.25;
-        }
-        .tech-divider-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--primary);
-            transform: rotate(45deg);
-            opacity: 0.35;
-            position: relative;
-        }
-        .tech-divider-dot::after {
-            content: '';
-            position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
-            border: 1px solid var(--primary);
-            transform: rotate(0deg);
-            opacity: 0.3;
-        }
-
-        /* Pulse effect on pillar icons */
-        .pillar-icon {
-            position: relative;
-        }
         .pillar:hover .pillar-icon::after {
-            content: '';
-            position: absolute;
-            top: -4px;
-            left: -4px;
-            right: -4px;
-            bottom: -4px;
-            border: 1px solid var(--primary);
-            border-radius: 16px;
-            opacity: 0;
+            content: ''; position: absolute; top: -4px; left: -4px; right: -4px; bottom: -4px;
+            border: 1px solid var(--primary); border-radius: 16px; opacity: 0;
             animation: hud-pulse 1.5s ease-out infinite;
         }
-        @keyframes hud-pulse {
-            0% { opacity: 0.4; transform: scale(1); }
-            100% { opacity: 0; transform: scale(1.3); }
-        }
+        @keyframes hud-pulse { 0% { opacity: 0.4; transform: scale(1); } 100% { opacity: 0; transform: scale(1.3); } }
+        @keyframes gradient-shift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 
-        /* Usecase card top bar animation */
-        .usecase-card::before {
-            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
-            background-size: 200% 100%;
-            animation: gradient-shift 4s ease infinite;
-        }
-        @keyframes gradient-shift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        /* Usecase number terminal style */
-        .usecase-number {
-            position: relative;
-            display: inline-block;
-        }
-        .usecase-number::before {
-            content: '>';
-            margin-right: 0.3rem;
-            opacity: 0.5;
-        }
-
-        /* CTA with grid + corner accents */
-        .cta-section {
-            position: relative;
-            overflow: hidden;
-        }
         .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image:
-                linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-            background-size: 32px 32px;
-            pointer-events: none;
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+            background-size: 32px 32px; pointer-events: none;
         }
         .cta-section::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.15) 100%);
             pointer-events: none;
         }
-        .cta-section > * { position: relative; z-index: 1; }
 
-        /* Section label decorative dashes */
-        .section-label::before {
-            content: '[';
-            opacity: 0.3;
-            margin-right: 0.4rem;
-            font-family: 'JetBrains Mono', monospace;
+        .tech-divider {
+            display: flex; align-items: center; justify-content: center; gap: 0.8rem;
+            margin: 3rem auto; max-width: 400px; padding: 0 1rem;
         }
-        .section-label::after {
-            content: ']';
-            opacity: 0.3;
-            margin-left: 0.4rem;
-            font-family: 'JetBrains Mono', monospace;
+        .tech-divider::before, .tech-divider::after {
+            content: ''; flex: 1; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent); opacity: 0.25;
         }
-
-        /* Nav logo glow on hover */
-        .nav-logo {
-            transition: text-shadow 0.3s;
+        .tech-divider-dot {
+            width: 8px; height: 8px; background: var(--primary);
+            transform: rotate(45deg); opacity: 0.35; position: relative;
         }
-        .nav-logo:hover {
-            text-shadow: 0 0 16px rgba(53,138,159,0.4);
+        .tech-divider-dot::after {
+            content: ''; position: absolute; top: -3px; left: -3px; right: -3px; bottom: -3px;
+            border: 1px solid var(--primary); transform: rotate(0deg); opacity: 0.3;
         }
 
-        /* Feature icon inner glow */
-        .feature-icon {
-            position: relative;
-        }
-        .feature-card:hover .feature-icon {
-            box-shadow: 0 0 16px rgba(53,138,159,0.15);
-        }
-        .feature-card:hover .feature-icon.gold {
-            box-shadow: 0 0 16px rgba(212,168,67,0.15);
-        }
+        .section-label::before { content: '['; opacity: 0.3; margin-right: 0.4rem; font-family: 'JetBrains Mono', monospace; }
+        .section-label::after { content: ']'; opacity: 0.3; margin-left: 0.4rem; font-family: 'JetBrains Mono', monospace; }
 
-        /* Benefit check glow */
-        .benefit-item:hover .benefit-check {
-            box-shadow: 0 0 12px rgba(53,138,159,0.15);
-        }
+        .nav-brand:hover { text-shadow: 0 0 16px rgba(53,138,159,0.4); }
+        .feature-card:hover .feature-icon { box-shadow: 0 0 16px rgba(53,138,159,0.15); }
+        .feature-card:hover .feature-icon.gold { box-shadow: 0 0 16px rgba(212,168,67,0.15); }
+        .benefit-item:hover .benefit-check { box-shadow: 0 0 12px rgba(53,138,159,0.15); }
+        .contact-link:hover { box-shadow: var(--shadow-md), 0 0 0 1px var(--primary), inset 0 0 12px rgba(53,138,159,0.04); }
 
-        /* Contact link HUD border on hover */
-        .contact-link:hover {
-            box-shadow: var(--shadow-md), 0 0 0 1px var(--primary), inset 0 0 12px rgba(53,138,159,0.04);
-        }
-
-        /* Footer tech line */
         footer::before {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 2px;
+            content: ''; display: block; width: 60px; height: 2px;
             background: linear-gradient(90deg, var(--primary), var(--accent));
-            margin: 0 auto 1.5rem;
-            opacity: 0.3;
+            margin: 0 auto 1.5rem; opacity: 0.3;
         }
 
-        /* ─── ANIMATIONS ─── */
         @media (prefers-reduced-motion: no-preference) {
-            .pillar, .feature-card, .usecase-card, .benefit-item {
-                opacity: 0;
-                transform: translateY(16px);
-                animation: fadeUp 0.5s ease forwards;
+            .pillar, .feature-card, .usecase-card, .benefit-item, .service-card {
+                opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards;
             }
-            @keyframes fadeUp {
-                to { opacity: 1; transform: translateY(0); }
-            }
+            @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
             .pillar:nth-child(1) { animation-delay: 0.1s; }
             .pillar:nth-child(2) { animation-delay: 0.2s; }
-            .pillar:nth-child(3) { animation-delay: 0.3s; }
-            .pillar:nth-child(4) { animation-delay: 0.4s; }
         }
     </style>
 </head>
@@ -914,10 +511,13 @@
 <!-- NAV -->
 <nav class="nav" id="navbar">
     <div class="nav-inner">
-        <a href="#" class="nav-logo"><img src="logo-pivot.png" alt="PIVOT"></a>
+        <a href="#" class="nav-brand">
+            <div class="nav-brand-icon">FF</div>
+            <span class="nav-brand-text">FlowForges</span>
+        </a>
         <div class="nav-links" id="navLinks">
-            <a href="#features" data-fr="Fonctionnalites" data-en="Features">Fonctionnalites</a>
-            <a href="#usecases" data-fr="Cas d'usage" data-en="Use Cases">Cas d'usage</a>
+            <a href="#pivot" data-fr="Produits" data-en="Products">Produits</a>
+            <a href="#services" data-fr="Services" data-en="Services">Services</a>
             <a href="#privacy" data-fr="Confidentialite" data-en="Privacy">Confidentialite</a>
             <a href="#contact">Contact</a>
             <button class="lang-btn" onclick="toggleLang()" id="langToggle">EN</button>
@@ -931,49 +531,57 @@
 <!-- HERO -->
 <section class="hero">
     <div class="hero-badge">
-        <span>&#9679;</span> <span data-fr="Bientot disponible sur iOS et Android" data-en="Coming soon on iOS and Android">Bientot disponible sur iOS et Android</span>
+        <span>&#9679;</span> <span data-fr="Studio independant — Apps & Automatisations" data-en="Independent studio — Apps & Automations">Studio independant — Apps & Automatisations</span>
     </div>
-    <img src="logo-pivot.png" alt="PIVOT" class="hero-logo">
-    <p class="hero-subtitle">Property Intelligent Visit Offline Tool</p>
-    <p class="hero-tagline" data-fr="Chaque detail compte. PIVOT les capture tous." data-en="Every detail matters. PIVOT captures them all.">Chaque detail compte. PIVOT les capture tous.</p>
+    <h1 class="hero-brand">Flow<span class="hero-brand-accent">Forges</span></h1>
+    <p class="hero-tagline" data-fr="Des outils intelligents pour les pros qui bougent. Apps mobiles offline-first. Automatisations sur mesure." data-en="Smart tools for professionals on the move. Offline-first mobile apps. Custom automations.">Des outils intelligents pour les pros qui bougent. Apps mobiles offline-first. Automatisations sur mesure.</p>
+
+    <div class="pillars">
+        <div class="pillar">
+            <div class="pillar-icon">&#128241;</div>
+            <h3 data-fr="Apps mobiles" data-en="Mobile apps">Apps mobiles</h3>
+            <p data-fr="Des outils de terrain qui fonctionnent sans reseau. Vos donnees restent sur votre appareil. Pas d'abonnement." data-en="Field tools that work without network. Your data stays on your device. No subscription.">Des outils de terrain qui fonctionnent sans reseau. Vos donnees restent sur votre appareil. Pas d'abonnement.</p>
+        </div>
+        <div class="pillar">
+            <div class="pillar-icon">&#9889;</div>
+            <h3>Automatisations</h3>
+            <p data-fr="Workflows sur mesure pour eliminer vos taches repetitives. Connexion entre vos outils existants. Gain de temps immediat." data-en="Custom workflows to eliminate repetitive tasks. Connect your existing tools. Immediate time savings.">Workflows sur mesure pour eliminer vos taches repetitives. Connexion entre vos outils existants. Gain de temps immediat.</p>
+        </div>
+    </div>
 
     <div class="sys-status">
         <div class="sys-status-dot"></div>
-        <span data-fr="SYS.READY // v1.0" data-en="SYS.READY // v1.0">SYS.READY // v1.0</span>
-    </div>
-
-    <!-- 4 PILLARS -->
-    <div class="pillars">
-        <div class="pillar">
-            <div class="pillar-icon">&#128274;</div>
-            <h3>Offline</h3>
-            <p data-fr="Fonctionne partout. Meme sans reseau. Caves, parkings, campagne." data-en="Works everywhere. Even offline. Basements, parking lots, countryside.">Fonctionne partout. Meme sans reseau. Caves, parkings, campagne.</p>
-        </div>
-        <div class="pillar">
-            <div class="pillar-icon">&#128737;</div>
-            <h3>Privacy</h3>
-            <p data-fr="Zero-knowledge. Aucune donnee ne quitte votre appareil." data-en="Zero-knowledge. No data ever leaves your device.">Zero-knowledge. Aucune donnee ne quitte votre appareil.</p>
-        </div>
-        <div class="pillar">
-            <div class="pillar-icon">&#128176;</div>
-            <h3 data-fr="Achat unique" data-en="One-time purchase">Achat unique</h3>
-            <p data-fr="Un prix. Pour toujours. Pas d'abonnement." data-en="One price. Forever. No subscription.">Un prix. Pour toujours. Pas d'abonnement.</p>
-        </div>
-        <div class="pillar">
-            <div class="pillar-icon">&#128241;</div>
-            <h3>Local</h3>
-            <p data-fr="Tout tourne sur votre telephone. Rien ne sort sans votre accord." data-en="Everything runs on your phone. Nothing leaves without your consent.">Tout tourne sur votre telephone. Rien ne sort sans votre accord.</p>
-        </div>
+        <span>SYS.ONLINE // FlowForges v1.0</span>
     </div>
 </section>
 
 <!-- TECH DIVIDER -->
 <div class="tech-divider"><div class="tech-divider-dot"></div></div>
 
+<!-- PIVOT PRODUCT -->
+<section class="section" id="pivot">
+    <div class="section-header">
+        <p class="section-label" data-fr="Notre app phare" data-en="Our flagship app">Notre app phare</p>
+    </div>
+
+    <div class="product-highlight">
+        <img src="logo-pivot.png" alt="PIVOT" class="product-logo">
+        <p class="product-subtitle">Property Intelligent Visit Offline Tool</p>
+        <p class="product-tagline" data-fr="Chaque detail compte. PIVOT les capture tous." data-en="Every detail matters. PIVOT captures them all.">Chaque detail compte. PIVOT les capture tous.</p>
+        <p class="product-desc" data-fr="L'outil mobile tout-en-un pour les visites immobilieres. Checklists, photos annotees, notes audio, rapports PDF. 100% hors-ligne, zero-knowledge." data-en="The all-in-one mobile tool for property visits. Checklists, annotated photos, audio notes, PDF reports. 100% offline, zero-knowledge.">L'outil mobile tout-en-un pour les visites immobilieres. Checklists, photos annotees, notes audio, rapports PDF. 100% hors-ligne, zero-knowledge.</p>
+        <div class="product-pills">
+            <span class="product-pill">iOS</span>
+            <span class="product-pill">Android</span>
+            <span class="product-pill">Offline</span>
+            <span class="product-pill" data-fr="Achat unique" data-en="One-time purchase">Achat unique</span>
+        </div>
+    </div>
+</section>
+
 <!-- FEATURES -->
 <section class="section" id="features">
     <div class="section-header">
-        <p class="section-label" data-fr="Fonctionnalites" data-en="Features">Fonctionnalites</p>
+        <p class="section-label" data-fr="Fonctionnalites PIVOT" data-en="PIVOT Features">Fonctionnalites PIVOT</p>
         <h2 class="section-title" data-fr="Tout ce qu'il faut. Rien de plus." data-en="Everything you need. Nothing more.">Tout ce qu'il faut. Rien de plus.</h2>
         <p class="section-desc" data-fr="PIVOT remplace vos check-lists papier, vos applis photo, vos dictaphones et vos tableurs en un seul outil." data-en="PIVOT replaces your paper checklists, photo apps, voice recorders and spreadsheets in one tool.">PIVOT remplace vos check-lists papier, vos applis photo, vos dictaphones et vos tableurs en un seul outil.</p>
     </div>
@@ -1102,11 +710,44 @@
 <!-- TECH DIVIDER -->
 <div class="tech-divider"><div class="tech-divider-dot"></div></div>
 
+<!-- SERVICES -->
+<section class="section services-bg" id="services">
+    <div class="section-header">
+        <p class="section-label" data-fr="Services" data-en="Services">Services</p>
+        <h2 class="section-title" data-fr="Automatisations sur mesure" data-en="Custom Automations">Automatisations sur mesure</h2>
+        <p class="section-desc" data-fr="Vous perdez du temps sur des taches repetitives ? On connecte vos outils et on automatise vos flux." data-en="Wasting time on repetitive tasks? We connect your tools and automate your workflows.">Vous perdez du temps sur des taches repetitives ? On connecte vos outils et on automatise vos flux.</p>
+    </div>
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="service-icon">&#128260;</div>
+            <h3 data-fr="Connexion d'outils" data-en="Tool Integration">Connexion d'outils</h3>
+            <p data-fr="On relie vos outils existants entre eux : CRM, email, agenda, facturation, tableurs. Plus de copier-coller." data-en="We connect your existing tools together: CRM, email, calendar, billing, spreadsheets. No more copy-paste.">On relie vos outils existants entre eux : CRM, email, agenda, facturation, tableurs. Plus de copier-coller.</p>
+            <div class="service-examples">
+                <span class="service-tag">Gmail</span>
+                <span class="service-tag">Google Sheets</span>
+                <span class="service-tag">Telegram</span>
+                <span class="service-tag">Notion</span>
+            </div>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">&#128640;</div>
+            <h3 data-fr="Workflows intelligents" data-en="Smart Workflows">Workflows intelligents</h3>
+            <p data-fr="Relances automatiques, notifications, rapports periodiques, traitement de leads. On construit le flux, vous recoltez les resultats." data-en="Automatic follow-ups, notifications, periodic reports, lead processing. We build the flow, you reap the results.">Relances automatiques, notifications, rapports periodiques, traitement de leads. On construit le flux, vous recoltez les resultats.</p>
+            <div class="service-examples">
+                <span class="service-tag" data-fr="Relances" data-en="Follow-ups">Relances</span>
+                <span class="service-tag" data-fr="Rapports" data-en="Reports">Rapports</span>
+                <span class="service-tag" data-fr="Alertes" data-en="Alerts">Alertes</span>
+                <span class="service-tag" data-fr="Facturation" data-en="Billing">Facturation</span>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- CTA -->
 <section class="section">
     <div class="cta-section">
-        <h2 data-fr="Pret a transformer vos visites ?" data-en="Ready to transform your visits?">Pret a transformer vos visites ?</h2>
-        <p data-fr="Disponible prochainement sur iOS et Android. Un achat unique, pas d'abonnement." data-en="Coming soon on iOS and Android. One-time purchase, no subscription.">Disponible prochainement sur iOS et Android. Un achat unique, pas d'abonnement.</p>
+        <h2 data-fr="Un projet ? Une question ?" data-en="Have a project? A question?">Un projet ? Une question ?</h2>
+        <p data-fr="Que ce soit pour PIVOT ou pour automatiser votre activite, on en discute." data-en="Whether it's about PIVOT or automating your business, let's talk.">Que ce soit pour PIVOT ou pour automatiser votre activite, on en discute.</p>
         <div class="cta-badges">
             <a href="https://t.me/Pivot_Contact_bot" class="cta-badge" target="_blank" rel="noopener">
                 &#128172; <span data-fr="Nous contacter sur Telegram" data-en="Contact us on Telegram">Nous contacter sur Telegram</span>
@@ -1120,7 +761,7 @@
     <div class="privacy-inner">
         <div class="section-header">
             <p class="section-label">Legal</p>
-            <h2 class="section-title" data-fr="Politique de confidentialite" data-en="Privacy Policy">Politique de confidentialite</h2>
+            <h2 class="section-title" data-fr="Politique de confidentialite — PIVOT" data-en="Privacy Policy — PIVOT">Politique de confidentialite — PIVOT</h2>
             <p style="color: var(--text-tertiary); font-size: 0.85rem; margin-top: 0.5rem;">
                 <span data-fr="Derniere mise a jour : 22 fevrier 2026" data-en="Last updated: February 22, 2026">Derniere mise a jour : 22 fevrier 2026</span>
             </p>
@@ -1146,20 +787,19 @@
                 <p>The following data is created and stored <strong>locally on your device only</strong>:</p>
                 <ul>
                     <li><strong>Visit data</strong>: Property names, addresses, notes, checklist ratings, and comments you enter during property visits.</li>
-                    <li><strong>Media files</strong>: Photos, audio recordings, and videos you capture during visits. These files are stored in the app's private storage on your device.</li>
+                    <li><strong>Media files</strong>: Photos, audio recordings, and videos you capture during visits.</li>
                     <li><strong>App preferences</strong>: Language preference, onboarding completion status, Pro purchase status. Stored securely using your device's secure storage (iOS Keychain / Android Keystore).</li>
                 </ul>
                 <p><strong>None of this data is ever sent to us or to any third-party server unless you explicitly choose to export or back up your data</strong> (see Section 5).</p>
 
                 <h3>4. Device Permissions</h3>
-                <p>PIVOT requests the following device permissions, all used exclusively for their stated purpose:</p>
                 <table>
                     <tr><th>Permission</th><th>Purpose</th><th>When Requested</th></tr>
                     <tr><td>Camera</td><td>Take photos and record videos during property visits</td><td>When you tap the photo/video capture button</td></tr>
                     <tr><td>Microphone</td><td>Record audio notes during visits</td><td>When you tap the audio recording button</td></tr>
                     <tr><td>Photo Library</td><td>Save exported photos</td><td>When you export visit data</td></tr>
                 </table>
-                <p>You can revoke these permissions at any time through your device's Settings. PIVOT will continue to function with reduced capability if permissions are denied.</p>
+                <p>You can revoke these permissions at any time through your device's Settings.</p>
 
                 <h3>5. Cloud Backup (Optional)</h3>
                 <p>PIVOT offers <strong>optional</strong> cloud backup to:</p>
@@ -1167,74 +807,59 @@
                     <li><strong>Google Drive</strong>: Using your own Google account</li>
                     <li><strong>Microsoft OneDrive</strong>: Using your own Microsoft account</li>
                 </ul>
-                <p><strong>Important details about cloud backup:</strong></p>
                 <ul>
-                    <li>Cloud backup is <strong>never automatic</strong>. You must explicitly tap a button to initiate each backup.</li>
-                    <li>Data is uploaded directly from your device to your own cloud storage account. It does not pass through our servers.</li>
+                    <li>Cloud backup is <strong>never automatic</strong>.</li>
+                    <li>Data is uploaded directly from your device to your own cloud storage account.</li>
                     <li>We do not have access to your cloud storage accounts or the files you upload.</li>
-                    <li>Authentication tokens for Google/Microsoft are stored securely on your device using platform-native secure storage.</li>
+                    <li>Authentication tokens are stored securely on your device using platform-native secure storage.</li>
                     <li>You can disconnect your cloud accounts at any time from within the app.</li>
-                    <li>Backup files are stored in a "PIVOT Backups" folder in your cloud storage. You can delete them at any time.</li>
                 </ul>
 
                 <h3>6. In-App Purchases</h3>
-                <p>PIVOT offers an optional one-time purchase ("PIVOT Pro") processed through:</p>
-                <ul>
-                    <li><strong>Apple App Store</strong> (iOS) via StoreKit</li>
-                    <li><strong>Google Play Store</strong> (Android) via Google Play Billing</li>
-                </ul>
-                <p>Purchase transactions are handled entirely by Apple/Google. We do not collect or store any payment information. Your Pro status is stored locally on your device.</p>
+                <p>PIVOT offers an optional one-time purchase ("PIVOT Pro") processed through Apple App Store (iOS) or Google Play Store (Android). We do not collect or store any payment information.</p>
 
                 <h3>7. Data Sharing</h3>
-                <p><strong>We do not share any data with third parties.</strong> Period.</p>
+                <p><strong>We do not share any data with third parties.</strong></p>
                 <ul>
-                    <li>No analytics or tracking SDKs are included in PIVOT.</li>
+                    <li>No analytics or tracking SDKs are included.</li>
                     <li>No advertising SDKs are included.</li>
                     <li>No data is sent to any server (we have none).</li>
-                    <li>The only network requests PIVOT makes are for cloud backup (Section 5) and in-app purchase verification (Section 6), both initiated exclusively by you.</li>
                 </ul>
 
                 <h3>8. Data Export</h3>
-                <p>You can export your visit data at any time in multiple formats (ZIP, PDF, CSV, JSON). Exported data belongs entirely to you. When you share exported data via your device's share sheet, it is handled by the sharing app you choose &mdash; PIVOT has no control over or visibility into that process.</p>
+                <p>You can export your visit data at any time in multiple formats (ZIP, PDF, CSV, JSON). Exported data belongs entirely to you.</p>
 
                 <h3>9. Data Retention</h3>
                 <p>All data is stored on your device. We retain nothing.</p>
                 <ul>
                     <li><strong>Local data</strong>: Persists until you delete the visit or uninstall the app.</li>
-                    <li><strong>iOS Keychain data</strong>: May persist after app uninstallation (this is standard iOS behavior for Keychain items).</li>
+                    <li><strong>iOS Keychain data</strong>: May persist after app uninstallation (standard iOS behavior).</li>
                     <li><strong>Cloud backup data</strong>: Persists in your cloud storage until you delete it manually.</li>
                 </ul>
 
                 <h3>10. Data Security</h3>
                 <ul>
-                    <li>All sensitive preferences are stored using platform-native secure storage:
-                        <ul>
-                            <li><strong>iOS</strong>: Keychain Services (hardware-backed encryption)</li>
-                            <li><strong>Android</strong>: Android Keystore (hardware-backed encryption)</li>
-                        </ul>
-                    </li>
-                    <li>Visit data and media files are stored in the app's private sandbox, inaccessible to other apps.</li>
-                    <li>No data is transmitted over the network except for optional cloud backup (encrypted via HTTPS/TLS).</li>
+                    <li>Sensitive preferences stored using platform-native secure storage (iOS Keychain / Android Keystore).</li>
+                    <li>Visit data and media files stored in the app's private sandbox.</li>
+                    <li>No network transmission except optional cloud backup (HTTPS/TLS).</li>
                 </ul>
 
                 <h3>11. Children's Privacy</h3>
-                <p>PIVOT is designed for real estate professionals and is not intended for use by children under 16. We do not knowingly collect any data from children.</p>
+                <p>PIVOT is designed for real estate professionals and is not intended for use by children under 16.</p>
 
                 <h3>12. Your Rights (GDPR / CCPA)</h3>
-                <p>Since all data is stored locally on your device and we have no access to it, you exercise your data rights directly:</p>
+                <p>Since all data is stored locally and we have no access to it:</p>
                 <ul>
                     <li><strong>Right to access</strong>: Open the app to view all your data.</li>
-                    <li><strong>Right to export</strong>: Use the export feature to get all your data in standard formats.</li>
-                    <li><strong>Right to delete</strong>: Delete individual visits or uninstall the app to remove all data.</li>
-                    <li><strong>Right to rectification</strong>: Edit your visit data directly in the app.</li>
+                    <li><strong>Right to export</strong>: Use the export feature.</li>
+                    <li><strong>Right to delete</strong>: Delete visits or uninstall the app.</li>
+                    <li><strong>Right to rectification</strong>: Edit your data directly in the app.</li>
                 </ul>
-                <p>We cannot assist with data access requests because <strong>we do not have your data</strong>.</p>
 
                 <h3>13. Changes to This Policy</h3>
-                <p>We may update this Privacy Policy from time to time. The "Last updated" date at the top of this page will be revised accordingly. Continued use of PIVOT after changes constitutes acceptance of the updated policy.</p>
+                <p>We may update this Privacy Policy. The "Last updated" date will be revised accordingly.</p>
 
                 <h3>14. Contact</h3>
-                <p>For questions or concerns about this Privacy Policy:</p>
                 <p>Telegram (preferred): <a href="https://t.me/Pivot_Contact_bot">@Pivot_Contact_bot</a><br>
                 Email: <a href="mailto:Hamsterjoevial@outlook.fr">Hamsterjoevial@outlook.fr</a></p>
             </div>
@@ -1242,7 +867,7 @@
             <!-- FRENCH -->
             <div id="privacy-fr" style="display:none;">
                 <h3>1. Introduction</h3>
-                <p>PIVOT ("Property Intelligent Visit Offline Tool") est une application mobile developpee par FlowForges concue pour accompagner les professionnels de l'immobilier lors des visites de biens. Cette Politique de Confidentialite decrit comment PIVOT gere vos donnees.</p>
+                <p>PIVOT ("Property Intelligent Visit Offline Tool") est une application mobile developpee par FlowForges concue pour accompagner les professionnels de l'immobilier lors des visites de biens.</p>
                 <p><strong>Notre principe fondamental : PIVOT est une application offline-first, zero-knowledge. Nous ne collectons, ne transmettons et ne stockons aucune de vos donnees personnelles sur nos serveurs. Nous n'avons pas de serveurs.</strong></p>
 
                 <h3>2. Responsable du traitement</h3>
@@ -1250,59 +875,40 @@
 
                 <h3>3. Donnees collectees</h3>
                 <p><strong>Nous ne collectons AUCUNE donnee personnelle.</strong> PIVOT fonctionne entierement sur votre appareil.</p>
-                <p>Les donnees suivantes sont creees et stockees <strong>uniquement en local sur votre appareil</strong> :</p>
                 <ul>
-                    <li><strong>Donnees de visite</strong> : Noms de proprietes, adresses, notes, evaluations de checklists et commentaires que vous saisissez pendant les visites.</li>
-                    <li><strong>Fichiers medias</strong> : Photos, enregistrements audio et videos que vous capturez pendant les visites.</li>
-                    <li><strong>Preferences</strong> : Langue, statut d'onboarding, statut d'achat Pro. Stockes de maniere securisee via le stockage securise de votre appareil.</li>
+                    <li><strong>Donnees de visite</strong> : Noms, adresses, notes, evaluations et commentaires.</li>
+                    <li><strong>Fichiers medias</strong> : Photos, enregistrements audio et videos captures pendant les visites.</li>
+                    <li><strong>Preferences</strong> : Langue, statut d'onboarding, statut d'achat Pro.</li>
                 </ul>
-                <p><strong>Aucune de ces donnees n'est jamais envoyee a nos serveurs ou a un serveur tiers, sauf si vous choisissez explicitement d'exporter ou de sauvegarder vos donnees</strong> (voir Section 5).</p>
+                <p><strong>Aucune de ces donnees n'est jamais envoyee a nos serveurs ou a un serveur tiers.</strong></p>
 
                 <h3>4. Permissions de l'appareil</h3>
                 <table>
                     <tr><th>Permission</th><th>Usage</th><th>Quand</th></tr>
-                    <tr><td>Appareil photo</td><td>Prendre des photos et enregistrer des videos pendant les visites</td><td>Bouton capture photo/video</td></tr>
-                    <tr><td>Microphone</td><td>Enregistrer des notes audio pendant les visites</td><td>Bouton enregistrement audio</td></tr>
+                    <tr><td>Appareil photo</td><td>Photos et videos pendant les visites</td><td>Bouton capture</td></tr>
+                    <tr><td>Microphone</td><td>Notes audio pendant les visites</td><td>Bouton enregistrement</td></tr>
                     <tr><td>Bibliotheque photos</td><td>Sauvegarder les photos exportees</td><td>Export de donnees</td></tr>
                 </table>
-                <p>Vous pouvez revoquer ces permissions a tout moment dans les Reglages de votre appareil.</p>
 
                 <h3>5. Sauvegarde Cloud (Optionnelle)</h3>
-                <p>PIVOT propose une sauvegarde cloud <strong>optionnelle</strong> vers :</p>
+                <p>Sauvegarde optionnelle vers Google Drive ou Microsoft OneDrive.</p>
                 <ul>
-                    <li><strong>Google Drive</strong> : Via votre propre compte Google</li>
-                    <li><strong>Microsoft OneDrive</strong> : Via votre propre compte Microsoft</li>
-                </ul>
-                <p><strong>Points importants :</strong></p>
-                <ul>
-                    <li>La sauvegarde cloud n'est <strong>jamais automatique</strong>.</li>
-                    <li>Les donnees sont envoyees directement de votre appareil vers votre propre compte cloud.</li>
-                    <li>Nous n'avons pas acces a vos comptes cloud ni aux fichiers que vous y envoyez.</li>
-                    <li>Les jetons d'authentification sont stockes de maniere securisee sur votre appareil.</li>
-                    <li>Vous pouvez deconnecter vos comptes cloud a tout moment.</li>
+                    <li>Jamais automatique. Donnees envoyees directement vers votre propre compte cloud.</li>
+                    <li>Nous n'avons pas acces a vos comptes cloud.</li>
+                    <li>Deconnexion possible a tout moment.</li>
                 </ul>
 
                 <h3>6. Achats integres</h3>
-                <p>PIVOT propose un achat unique optionnel ("PIVOT Pro") traite par Apple App Store (iOS) ou Google Play Store (Android). Nous ne collectons ni ne stockons aucune information de paiement.</p>
+                <p>Achat unique optionnel ("PIVOT Pro") traite par Apple ou Google. Aucune information de paiement collectee.</p>
 
                 <h3>7. Partage de donnees</h3>
-                <p><strong>Nous ne partageons aucune donnee avec des tiers.</strong></p>
-                <ul>
-                    <li>Aucun SDK d'analytics ou de tracking n'est inclus.</li>
-                    <li>Aucun SDK publicitaire n'est inclus.</li>
-                    <li>Aucune donnee n'est envoyee a un serveur (nous n'en avons pas).</li>
-                </ul>
+                <p><strong>Aucun partage avec des tiers.</strong> Aucun SDK d'analytics, de tracking ou publicitaire.</p>
 
                 <h3>8. Export de donnees</h3>
-                <p>Vous pouvez exporter vos donnees de visite a tout moment en plusieurs formats (ZIP, PDF, CSV, JSON). Les donnees exportees vous appartiennent entierement.</p>
+                <p>Export a tout moment en ZIP, PDF, CSV, JSON. Les donnees exportees vous appartiennent.</p>
 
                 <h3>9. Conservation des donnees</h3>
-                <p>Toutes les donnees sont stockees sur votre appareil. Nous ne conservons rien.</p>
-                <ul>
-                    <li><strong>Donnees locales</strong> : Persistent jusqu'a suppression ou desinstallation.</li>
-                    <li><strong>Donnees Trousseau iOS</strong> : Peuvent persister apres desinstallation (comportement standard iOS).</li>
-                    <li><strong>Donnees cloud</strong> : Persistent dans votre stockage cloud jusqu'a suppression manuelle.</li>
-                </ul>
+                <p>Toutes les donnees sont sur votre appareil. Nous ne conservons rien.</p>
 
                 <h3>10. Securite des donnees</h3>
                 <ul>
@@ -1312,19 +918,18 @@
                 </ul>
 
                 <h3>11. Mineurs</h3>
-                <p>PIVOT est concu pour les professionnels de l'immobilier et n'est pas destine aux enfants de moins de 16 ans.</p>
+                <p>PIVOT n'est pas destine aux enfants de moins de 16 ans.</p>
 
                 <h3>12. Vos droits (RGPD)</h3>
-                <p>Puisque toutes les donnees sont stockees localement et que nous n'y avons pas acces, vous exercez vos droits directement :</p>
                 <ul>
-                    <li><strong>Droit d'acces</strong> : Ouvrez l'application pour consulter vos donnees.</li>
-                    <li><strong>Droit a la portabilite</strong> : Utilisez la fonction d'export.</li>
-                    <li><strong>Droit a l'effacement</strong> : Supprimez les visites ou desinstallez l'application.</li>
-                    <li><strong>Droit de rectification</strong> : Modifiez vos donnees directement dans l'application.</li>
+                    <li><strong>Acces</strong> : Ouvrez l'application.</li>
+                    <li><strong>Portabilite</strong> : Fonction d'export.</li>
+                    <li><strong>Effacement</strong> : Supprimez les visites ou desinstallez.</li>
+                    <li><strong>Rectification</strong> : Modifiez directement dans l'app.</li>
                 </ul>
 
                 <h3>13. Modifications</h3>
-                <p>Nous pouvons mettre a jour cette politique. La date de derniere mise a jour sera revisee en consequence.</p>
+                <p>La date de derniere mise a jour sera revisee en consequence.</p>
 
                 <h3>14. Contact</h3>
                 <p>Telegram (privilegie) : <a href="https://t.me/Pivot_Contact_bot">@Pivot_Contact_bot</a><br>
@@ -1351,57 +956,42 @@
 </section>
 
 <footer>
-    <p>&copy; 2026 <a href="#">FlowForges</a>. <span data-fr="Tous droits reserves." data-en="All rights reserved.">Tous droits reserves.</span></p>
+    <div class="footer-links">
+        <a href="#pivot">PIVOT</a>
+        <a href="#services" data-fr="Services" data-en="Services">Services</a>
+        <a href="#privacy" data-fr="Confidentialite" data-en="Privacy">Confidentialite</a>
+        <a href="#contact">Contact</a>
+    </div>
+    <p>&copy; 2026 FlowForges. <span data-fr="Tous droits reserves." data-en="All rights reserved.">Tous droits reserves.</span></p>
 </footer>
 
 <script>
-// Language toggle
 let currentLang = 'fr';
-
 function toggleLang() {
     currentLang = currentLang === 'fr' ? 'en' : 'fr';
     document.getElementById('langToggle').textContent = currentLang === 'fr' ? 'EN' : 'FR';
     document.documentElement.lang = currentLang;
-
-    // Update all translatable elements
     document.querySelectorAll('[data-fr]').forEach(el => {
         el.textContent = el.getAttribute('data-' + currentLang);
     });
 }
-
-// Privacy policy language toggle (independent)
 function showPrivacyLang(lang, btn) {
     document.getElementById('privacy-en').style.display = lang === 'en' ? 'block' : 'none';
     document.getElementById('privacy-fr').style.display = lang === 'fr' ? 'block' : 'none';
     document.querySelectorAll('.privacy-lang-switch button').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
 }
-
-// Mobile menu toggle
-function toggleMenu() {
-    document.getElementById('navLinks').classList.toggle('open');
-}
-
-// Navbar scroll effect
+function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
 window.addEventListener('scroll', () => {
     document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
 });
-
-// Close mobile menu on link click
 document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        document.getElementById('navLinks').classList.remove('open');
-    });
+    link.addEventListener('click', () => { document.getElementById('navLinks').classList.remove('open'); });
 });
-
-// Add HUD brackets to feature cards (extra 2 corners)
 document.querySelectorAll('.feature-card').forEach(card => {
-    const tr = document.createElement('span');
-    tr.className = 'hud-bracket-tr';
-    const bl = document.createElement('span');
-    bl.className = 'hud-bracket-bl';
-    card.appendChild(tr);
-    card.appendChild(bl);
+    const tr = document.createElement('span'); tr.className = 'hud-bracket-tr';
+    const bl = document.createElement('span'); bl.className = 'hud-bracket-bl';
+    card.appendChild(tr); card.appendChild(bl);
 });
 </script>
 
