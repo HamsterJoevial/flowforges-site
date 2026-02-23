@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowForges — PIVOT App</title>
+    <style>
+        :root {
+            --bg: #0a0e14;
+            --surface: #111820;
+            --border: #1e2a36;
+            --accent: #00e5ff;
+            --text: #e0e6ed;
+            --text-secondary: #8899a6;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        .container { max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; }
+        header {
+            text-align: center;
+            padding: 3rem 1rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+        header h1 {
+            font-size: 2rem;
+            letter-spacing: 4px;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        header p { color: var(--text-secondary); font-size: 0.95rem; }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+        nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+        nav a:hover { border-color: var(--accent); }
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        h2 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        h3 {
+            color: var(--text);
+            font-size: 1rem;
+            margin: 1.5rem 0 0.5rem;
+        }
+        p, li { color: var(--text-secondary); font-size: 0.92rem; }
+        ul { padding-left: 1.5rem; margin: 0.5rem 0; }
+        li { margin-bottom: 0.3rem; }
+        strong { color: var(--text); }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.85rem;
+        }
+        th, td {
+            border: 1px solid var(--border);
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+        }
+        th { background: var(--bg); color: var(--accent); font-weight: 600; }
+        td { color: var(--text-secondary); }
+        hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+        a { color: var(--accent); }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+        .hero-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .feature {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1.2rem;
+            text-align: center;
+        }
+        .feature-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .feature-title { color: var(--text); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.3rem; }
+        .feature-desc { color: var(--text-secondary); font-size: 0.8rem; }
+        .lang-switch {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        .lang-switch button {
+            background: var(--surface);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            padding: 0.4rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+        .lang-switch button.active {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>FLOWFORGES</h1>
+    <p>Smart tools for real estate professionals</p>
+</header>
+
+<nav>
+    <a href="#about">PIVOT</a>
+    <a href="#privacy">Privacy</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<div class="container">
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="card">
+        <h2>PIVOT</h2>
+        <p>Property Intelligent Visit Offline Tool — your mobile companion for real estate property visits.</p>
+        <div class="hero-features">
+            <div class="feature">
+                <div class="feature-icon">&#128274;</div>
+                <div class="feature-title">100% Offline</div>
+                <div class="feature-desc">Works without internet. Your data stays on your device.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">&#128203;</div>
+                <div class="feature-title">Smart Checklists</div>
+                <div class="feature-desc">Tailored checklists for every property type.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">&#128247;</div>
+                <div class="feature-title">Photo & Audio</div>
+                <div class="feature-desc">Capture media during visits with one tap.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">&#128230;</div>
+                <div class="feature-title">Multi-format Export</div>
+                <div class="feature-desc">PDF, CSV, JSON, ZIP — share your way.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRIVACY POLICY -->
+    <section id="privacy">
+        <div class="card">
+            <h2>Privacy Policy / Politique de Confidentialit&eacute;</h2>
+            <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem;">
+                Last updated: February 22, 2026 | Derni&egrave;re mise &agrave; jour : 22 f&eacute;vrier 2026
+            </p>
+
+            <div class="lang-switch">
+                <button class="active" onclick="showLang('en', this)">English</button>
+                <button onclick="showLang('fr', this)">Fran&ccedil;ais</button>
+            </div>
+
+            <!-- ENGLISH -->
+            <div id="lang-en">
+                <h3>1. Introduction</h3>
+                <p>PIVOT ("Property Intelligent Visit Offline Tool") is a mobile application developed by FlowForges (Joffrey, sole proprietor) designed to assist real estate professionals during property visits. This Privacy Policy describes how PIVOT handles your data.</p>
+                <p><strong>Our core principle: PIVOT is an offline-first, zero-knowledge application. We do not collect, transmit, or store any of your personal data on our servers. We have no servers.</strong></p>
+
+                <h3>2. Data Controller</h3>
+                <p>FlowForges<br>Contact: <a href="mailto:Hamsterjoevial@outlook.fr">Hamsterjoevial@outlook.fr</a></p>
+
+                <h3>3. Data We Collect</h3>
+                <p><strong>We collect NO personal data.</strong> PIVOT operates entirely on your device.</p>
+                <p>The following data is created and stored <strong>locally on your device only</strong>:</p>
+                <ul>
+                    <li><strong>Visit data</strong>: Property names, addresses, notes, checklist ratings, and comments you enter during property visits.</li>
+                    <li><strong>Media files</strong>: Photos, audio recordings, and videos you capture during visits. These files are stored in the app's private storage on your device.</li>
+                    <li><strong>App preferences</strong>: Language preference, onboarding completion status, Pro purchase status. Stored securely using your device's secure storage (iOS Keychain / Android Keystore).</li>
+                </ul>
+                <p><strong>None of this data is ever sent to us or to any third-party server unless you explicitly choose to export or back up your data</strong> (see Section 5).</p>
+
+                <h3>4. Device Permissions</h3>
+                <p>PIVOT requests the following device permissions, all used exclusively for their stated purpose:</p>
+                <table>
+                    <tr><th>Permission</th><th>Purpose</th><th>When Requested</th></tr>
+                    <tr><td>Camera</td><td>Take photos and record videos during property visits</td><td>When you tap the photo/video capture button</td></tr>
+                    <tr><td>Microphone</td><td>Record audio notes during visits</td><td>When you tap the audio recording button</td></tr>
+                    <tr><td>Photo Library</td><td>Save exported photos</td><td>When you export visit data</td></tr>
+                </table>
+                <p>You can revoke these permissions at any time through your device's Settings. PIVOT will continue to function with reduced capability if permissions are denied.</p>
+
+                <h3>5. Cloud Backup (Optional)</h3>
+                <p>PIVOT offers <strong>optional</strong> cloud backup to:</p>
+                <ul>
+                    <li><strong>Google Drive</strong>: Using your own Google account</li>
+                    <li><strong>Microsoft OneDrive</strong>: Using your own Microsoft account</li>
+                </ul>
+                <p><strong>Important details about cloud backup:</strong></p>
+                <ul>
+                    <li>Cloud backup is <strong>never automatic</strong>. You must explicitly tap a button to initiate each backup.</li>
+                    <li>Data is uploaded directly from your device to your own cloud storage account. It does not pass through our servers.</li>
+                    <li>We do not have access to your cloud storage accounts or the files you upload.</li>
+                    <li>Authentication tokens for Google/Microsoft are stored securely on your device using platform-native secure storage.</li>
+                    <li>You can disconnect your cloud accounts at any time from within the app.</li>
+                    <li>Backup files are stored in a "PIVOT Backups" folder in your cloud storage. You can delete them at any time.</li>
+                </ul>
+
+                <h3>6. In-App Purchases</h3>
+                <p>PIVOT offers an optional one-time purchase ("PIVOT Pro") processed through:</p>
+                <ul>
+                    <li><strong>Apple App Store</strong> (iOS) via StoreKit</li>
+                    <li><strong>Google Play Store</strong> (Android) via Google Play Billing</li>
+                </ul>
+                <p>Purchase transactions are handled entirely by Apple/Google. We do not collect or store any payment information. Your Pro status is stored locally on your device.</p>
+
+                <h3>7. Data Sharing</h3>
+                <p><strong>We do not share any data with third parties.</strong> Period.</p>
+                <ul>
+                    <li>No analytics or tracking SDKs are included in PIVOT.</li>
+                    <li>No advertising SDKs are included.</li>
+                    <li>No data is sent to any server (we have none).</li>
+                    <li>The only network requests PIVOT makes are for cloud backup (Section 5) and in-app purchase verification (Section 6), both initiated exclusively by you.</li>
+                </ul>
+
+                <h3>8. Data Export</h3>
+                <p>You can export your visit data at any time in multiple formats (ZIP, PDF, CSV, JSON). Exported data belongs entirely to you. When you share exported data via your device's share sheet, it is handled by the sharing app you choose &mdash; PIVOT has no control over or visibility into that process.</p>
+
+                <h3>9. Data Retention</h3>
+                <p>All data is stored on your device. We retain nothing.</p>
+                <ul>
+                    <li><strong>Local data</strong>: Persists until you delete the visit or uninstall the app.</li>
+                    <li><strong>iOS Keychain data</strong>: May persist after app uninstallation (this is standard iOS behavior for Keychain items).</li>
+                    <li><strong>Cloud backup data</strong>: Persists in your cloud storage until you delete it manually.</li>
+                </ul>
+
+                <h3>10. Data Security</h3>
+                <ul>
+                    <li>All sensitive preferences are stored using platform-native secure storage:
+                        <ul>
+                            <li><strong>iOS</strong>: Keychain Services (hardware-backed encryption)</li>
+                            <li><strong>Android</strong>: Android Keystore (hardware-backed encryption)</li>
+                        </ul>
+                    </li>
+                    <li>Visit data and media files are stored in the app's private sandbox, inaccessible to other apps.</li>
+                    <li>No data is transmitted over the network except for optional cloud backup (encrypted via HTTPS/TLS).</li>
+                </ul>
+
+                <h3>11. Children's Privacy</h3>
+                <p>PIVOT is designed for real estate professionals and is not intended for use by children under 16. We do not knowingly collect any data from children.</p>
+
+                <h3>12. Your Rights (GDPR / CCPA)</h3>
+                <p>Since all data is stored locally on your device and we have no access to it, you exercise your data rights directly:</p>
+                <ul>
+                    <li><strong>Right to access</strong>: Open the app to view all your data.</li>
+                    <li><strong>Right to export</strong>: Use the export feature to get all your data in standard formats.</li>
+                    <li><strong>Right to delete</strong>: Delete individual visits or uninstall the app to remove all data.</li>
+                    <li><strong>Right to rectification</strong>: Edit your visit data directly in the app.</li>
+                </ul>
+                <p>We cannot assist with data access requests because <strong>we do not have your data</strong>.</p>
+
+                <h3>13. Changes to This Policy</h3>
+                <p>We may update this Privacy Policy from time to time. The "Last updated" date at the top of this page will be revised accordingly. Continued use of PIVOT after changes constitutes acceptance of the updated policy.</p>
+
+                <h3>14. Contact</h3>
+                <p>For questions or concerns about this Privacy Policy:</p>
+                <p>Email: <a href="mailto:Hamsterjoevial@outlook.fr">Hamsterjoevial@outlook.fr</a><br>
+                Telegram: <a href="https://t.me/Pivot_Contact_bot">@Pivot_Contact_bot</a></p>
+            </div>
+
+            <!-- FRENCH -->
+            <div id="lang-fr" style="display:none;">
+                <h3>1. Introduction</h3>
+                <p>PIVOT ("Property Intelligent Visit Offline Tool") est une application mobile d&eacute;velopp&eacute;e par FlowForges (Joffrey, entrepreneur individuel) con&ccedil;ue pour accompagner les professionnels de l'immobilier lors des visites de biens. Cette Politique de Confidentialit&eacute; d&eacute;crit comment PIVOT g&egrave;re vos donn&eacute;es.</p>
+                <p><strong>Notre principe fondamental : PIVOT est une application offline-first, zero-knowledge. Nous ne collectons, ne transmettons et ne stockons aucune de vos donn&eacute;es personnelles sur nos serveurs. Nous n'avons pas de serveurs.</strong></p>
+
+                <h3>2. Responsable du traitement</h3>
+                <p>FlowForges<br>Contact : <a href="mailto:Hamsterjoevial@outlook.fr">Hamsterjoevial@outlook.fr</a></p>
+
+                <h3>3. Donn&eacute;es collect&eacute;es</h3>
+                <p><strong>Nous ne collectons AUCUNE donn&eacute;e personnelle.</strong> PIVOT fonctionne enti&egrave;rement sur votre appareil.</p>
+                <p>Les donn&eacute;es suivantes sont cr&eacute;&eacute;es et stock&eacute;es <strong>uniquement en local sur votre appareil</strong> :</p>
+                <ul>
+                    <li><strong>Donn&eacute;es de visite</strong> : Noms de propri&eacute;t&eacute;s, adresses, notes, &eacute;valuations de checklists et commentaires que vous saisissez pendant les visites.</li>
+                    <li><strong>Fichiers m&eacute;dias</strong> : Photos, enregistrements audio et vid&eacute;os que vous capturez pendant les visites.</li>
+                    <li><strong>Pr&eacute;f&eacute;rences</strong> : Langue, statut d'onboarding, statut d'achat Pro. Stock&eacute;s de mani&egrave;re s&eacute;curis&eacute;e via le stockage s&eacute;curis&eacute; de votre appareil.</li>
+                </ul>
+                <p><strong>Aucune de ces donn&eacute;es n'est jamais envoy&eacute;e &agrave; nos serveurs ou &agrave; un serveur tiers, sauf si vous choisissez explicitement d'exporter ou de sauvegarder vos donn&eacute;es</strong> (voir Section 5).</p>
+
+                <h3>4. Permissions de l'appareil</h3>
+                <table>
+                    <tr><th>Permission</th><th>Usage</th><th>Quand</th></tr>
+                    <tr><td>Appareil photo</td><td>Prendre des photos et enregistrer des vid&eacute;os pendant les visites</td><td>Bouton capture photo/vid&eacute;o</td></tr>
+                    <tr><td>Microphone</td><td>Enregistrer des notes audio pendant les visites</td><td>Bouton enregistrement audio</td></tr>
+                    <tr><td>Biblioth&egrave;que photos</td><td>Sauvegarder les photos export&eacute;es</td><td>Export de donn&eacute;es</td></tr>
+                </table>
+                <p>Vous pouvez r&eacute;voquer ces permissions &agrave; tout moment dans les R&eacute;glages de votre appareil.</p>
+
+                <h3>5. Sauvegarde Cloud (Optionnelle)</h3>
+                <p>PIVOT propose une sauvegarde cloud <strong>optionnelle</strong> vers :</p>
+                <ul>
+                    <li><strong>Google Drive</strong> : Via votre propre compte Google</li>
+                    <li><strong>Microsoft OneDrive</strong> : Via votre propre compte Microsoft</li>
+                </ul>
+                <p><strong>Points importants :</strong></p>
+                <ul>
+                    <li>La sauvegarde cloud n'est <strong>jamais automatique</strong>.</li>
+                    <li>Les donn&eacute;es sont envoy&eacute;es directement de votre appareil vers votre propre compte cloud.</li>
+                    <li>Nous n'avons pas acc&egrave;s &agrave; vos comptes cloud ni aux fichiers que vous y envoyez.</li>
+                    <li>Les jetons d'authentification sont stock&eacute;s de mani&egrave;re s&eacute;curis&eacute;e sur votre appareil.</li>
+                    <li>Vous pouvez d&eacute;connecter vos comptes cloud &agrave; tout moment.</li>
+                </ul>
+
+                <h3>6. Achats int&eacute;gr&eacute;s</h3>
+                <p>PIVOT propose un achat unique optionnel ("PIVOT Pro") trait&eacute; par Apple App Store (iOS) ou Google Play Store (Android). Nous ne collectons ni ne stockons aucune information de paiement.</p>
+
+                <h3>7. Partage de donn&eacute;es</h3>
+                <p><strong>Nous ne partageons aucune donn&eacute;e avec des tiers.</strong></p>
+                <ul>
+                    <li>Aucun SDK d'analytics ou de tracking n'est inclus.</li>
+                    <li>Aucun SDK publicitaire n'est inclus.</li>
+                    <li>Aucune donn&eacute;e n'est envoy&eacute;e &agrave; un serveur (nous n'en avons pas).</li>
+                </ul>
+
+                <h3>8. Export de donn&eacute;es</h3>
+                <p>Vous pouvez exporter vos donn&eacute;es de visite &agrave; tout moment en plusieurs formats (ZIP, PDF, CSV, JSON). Les donn&eacute;es export&eacute;es vous appartiennent enti&egrave;rement.</p>
+
+                <h3>9. Conservation des donn&eacute;es</h3>
+                <p>Toutes les donn&eacute;es sont stock&eacute;es sur votre appareil. Nous ne conservons rien.</p>
+                <ul>
+                    <li><strong>Donn&eacute;es locales</strong> : Persistent jusqu'&agrave; suppression ou d&eacute;sinstallation.</li>
+                    <li><strong>Donn&eacute;es Trousseau iOS</strong> : Peuvent persister apr&egrave;s d&eacute;sinstallation (comportement standard iOS).</li>
+                    <li><strong>Donn&eacute;es cloud</strong> : Persistent dans votre stockage cloud jusqu'&agrave; suppression manuelle.</li>
+                </ul>
+
+                <h3>10. S&eacute;curit&eacute; des donn&eacute;es</h3>
+                <ul>
+                    <li>Stockage s&eacute;curis&eacute; natif (Trousseau iOS / Android Keystore).</li>
+                    <li>Donn&eacute;es dans le bac &agrave; sable priv&eacute; de l'application.</li>
+                    <li>Aucune transmission r&eacute;seau sauf sauvegarde cloud optionnelle (HTTPS/TLS).</li>
+                </ul>
+
+                <h3>11. Mineurs</h3>
+                <p>PIVOT est con&ccedil;u pour les professionnels de l'immobilier et n'est pas destin&eacute; aux enfants de moins de 16 ans.</p>
+
+                <h3>12. Vos droits (RGPD)</h3>
+                <p>Puisque toutes les donn&eacute;es sont stock&eacute;es localement et que nous n'y avons pas acc&egrave;s, vous exercez vos droits directement :</p>
+                <ul>
+                    <li><strong>Droit d'acc&egrave;s</strong> : Ouvrez l'application pour consulter vos donn&eacute;es.</li>
+                    <li><strong>Droit &agrave; la portabilit&eacute;</strong> : Utilisez la fonction d'export.</li>
+                    <li><strong>Droit &agrave; l'effacement</strong> : Supprimez les visites ou d&eacute;sinstallez l'application.</li>
+                    <li><strong>Droit de rectification</strong> : Modifiez vos donn&eacute;es directement dans l'application.</li>
+                </ul>
+
+                <h3>13. Modifications</h3>
+                <p>Nous pouvons mettre &agrave; jour cette politique. La date de derni&egrave;re mise &agrave; jour sera r&eacute;vis&eacute;e en cons&eacute;quence.</p>
+
+                <h3>14. Contact</h3>
+                <p>Email : <a href="mailto:Hamsterjoevial@outlook.fr">Hamsterjoevial@outlook.fr</a><br>
+                Telegram : <a href="https://t.me/Pivot_Contact_bot">@Pivot_Contact_bot</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="card">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:Hamsterjoevial@outlook.fr">Hamsterjoevial@outlook.fr</a></p>
+        <p>Telegram: <a href="https://t.me/Pivot_Contact_bot">@Pivot_Contact_bot</a></p>
+    </section>
+
+</div>
+
+<footer>
+    &copy; 2026 FlowForges. All rights reserved.
+</footer>
+
+<script>
+function showLang(lang, btn) {
+    document.getElementById('lang-en').style.display = lang === 'en' ? 'block' : 'none';
+    document.getElementById('lang-fr').style.display = lang === 'fr' ? 'block' : 'none';
+    document.querySelectorAll('.lang-switch button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+}
+</script>
+
+</body>
+</html>
