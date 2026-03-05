@@ -1,1095 +1,309 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlowForges — Des outils intelligents pour les pros qui bougent</title>
-    <meta name="description" content="FlowForges : apps mobiles offline-first et automatisations sur mesure pour les professionnels. PIVOT, notre app phare pour les visites immobilières.">
-    <meta name="theme-color" content="#358A9F">
-    <meta property="og:title" content="FlowForges — Apps & Automatisations pour professionnels">
-    <meta property="og:description" content="Apps mobiles offline-first et automatisations sur mesure. PIVOT : l'outil de visite immobilière tout-en-un.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://hamsterjoevial.github.io/flowforges-site/">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #358A9F;
-            --primary-dark: #2A7080;
-            --primary-light: #E8F4F7;
-            --accent: #D4A843;
-            --accent-light: #FBF4E4;
-            --secondary: #4D5D6E;
-            --bg: #F6F7FA;
-            --surface: #FFFFFF;
-            --surface-alt: #EBEDF2;
-            --text: #0D1320;
-            --text-secondary: #5A6577;
-            --text-tertiary: #8B95A5;
-            --border: #D8DCE4;
-            --border-light: #E8EBF0;
-            --success: #3DAA6D;
-            --error: #C94444;
-            --radius: 12px;
-            --radius-sm: 8px;
-            --radius-lg: 20px;
-            --shadow-sm: 0 1px 3px rgba(13,19,32,0.06);
-            --shadow-md: 0 4px 12px rgba(13,19,32,0.08);
-            --shadow-lg: 0 8px 30px rgba(13,19,32,0.1);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlowForges — Studio d'applications mobiles</title>
+  <meta name="description" content="FlowForges conçoit des applications mobiles pour les professionnels. PIVOT, VigieContrat.">
+  <meta name="theme-color" content="#358A9F">
+  <meta property="og:title" content="FlowForges">
+  <meta property="og:description" content="Des outils mobiles pensés pour le terrain.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hamsterjoevial.github.io/flowforges-site/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #358A9F;
+      --primary-dark: #2A7080;
+      --primary-light: #E8F4F7;
+      --accent: #D4A843;
+      --accent-light: #FBF4E4;
+      --bg: #F6F7FA;
+      --surface: #FFFFFF;
+      --text: #0D1320;
+      --text-secondary: #5A6577;
+      --text-tertiary: #8B95A5;
+      --border: #D8DCE4;
+      --border-light: #E8EBF0;
+      --success: #3DAA6D;
+      --radius: 12px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 1px 3px rgba(13,19,32,0.06);
+      --shadow-md: 0 4px 12px rgba(13,19,32,0.08);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image: radial-gradient(circle, var(--primary) 0.5px, transparent 0.5px);
+      background-size: 32px 32px; opacity: 0.025; pointer-events: none; z-index: 0;
+    }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(246,247,250,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .nav-inner {
+      max-width: 960px; margin: 0 auto; padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between; height: 58px;
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--text);
+      font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1rem;
+    }
+    .nav-mark {
+      width: 30px; height: 30px; background: var(--primary); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 0.8rem; font-weight: 800;
+    }
+    .nav-contact {
+      font-size: 0.85rem; font-weight: 500; color: var(--text-secondary);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-contact:hover { color: var(--primary); }
 
-        /* ─── NAV ─── */
-        .nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            background: rgba(246,247,250,0.92);
-            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-light);
-            transition: box-shadow 0.3s;
-        }
-        .nav.scrolled { box-shadow: var(--shadow-sm); }
-        .nav-inner {
-            max-width: 1100px; margin: 0 auto; padding: 0 1.5rem;
-            display: flex; align-items: center; justify-content: space-between; height: 60px;
-        }
-        .nav-brand {
-            display: flex; align-items: center; gap: 0.6rem;
-            text-decoration: none; color: var(--text);
-        }
-        .nav-brand-icon {
-            width: 32px; height: 32px; background: var(--primary);
-            border-radius: 8px; display: flex; align-items: center; justify-content: center;
-            color: #fff; font-weight: 800; font-size: 0.9rem;
-            font-family: 'JetBrains Mono', monospace;
-        }
-        .nav-brand-text {
-            font-weight: 700; font-size: 1.05rem; letter-spacing: -0.5px;
-        }
-        .nav-links { display: flex; align-items: center; gap: 1.5rem; }
-        .nav-links a {
-            color: var(--text-secondary); text-decoration: none;
-            font-size: 0.88rem; font-weight: 500; transition: color 0.2s;
-        }
-        .nav-links a:hover { color: var(--primary); }
-        .lang-btn {
-            background: var(--surface-alt); border: 1px solid var(--border);
-            color: var(--text-secondary); padding: 0.3rem 0.7rem; border-radius: 6px;
-            font-size: 0.8rem; font-weight: 600; cursor: pointer;
-            font-family: 'JetBrains Mono', monospace; transition: all 0.2s;
-        }
-        .lang-btn:hover { border-color: var(--primary); color: var(--primary); }
-        .nav-mobile-toggle {
-            display: none; background: none; border: none; cursor: pointer; padding: 0.5rem;
-        }
-        .nav-mobile-toggle span {
-            display: block; width: 22px; height: 2px; background: var(--text);
-            margin: 5px 0; transition: all 0.3s;
-        }
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 7rem 2rem 4rem; text-align: center;
+      position: relative;
+      background: linear-gradient(180deg, var(--primary-light) 0%, var(--bg) 60%);
+    }
+    .hero::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+      opacity: 0.2; animation: scanline 10s linear infinite; pointer-events: none;
+    }
+    @keyframes scanline { 0% { top: 0; } 100% { top: 100%; } }
+    .hero > * { position: relative; z-index: 1; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 100px; padding: 5px 14px;
+      font-size: 0.78rem; color: var(--text-secondary);
+      margin-bottom: 2rem; box-shadow: var(--shadow-sm);
+    }
+    .badge-dot { width: 7px; height: 7px; background: var(--success); border-radius: 50%; animation: blink 2s ease-in-out infinite; }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 800;
+      letter-spacing: -2px; line-height: 1.05; margin-bottom: 1.25rem;
+    }
+    .hero h1 em { font-style: normal; color: var(--primary); }
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.15rem); color: var(--text-secondary);
+      max-width: 420px; margin: 0 auto 3rem;
+    }
+    .hero-sys {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.68rem;
+      color: var(--text-tertiary); letter-spacing: 1.5px;
+      display: flex; align-items: center; gap: 8px;
+    }
 
-        /* ─── HERO ─── */
-        .hero {
-            padding: 8rem 1.5rem 4rem; text-align: center;
-            background: linear-gradient(180deg, var(--primary-light) 0%, var(--bg) 100%);
-            position: relative; overflow: hidden;
-        }
-        .hero > * { position: relative; z-index: 2; }
-        .hero-badge {
-            display: inline-block; background: var(--surface); border: 1px solid var(--border);
-            border-radius: 100px; padding: 0.4rem 1rem; font-size: 0.78rem;
-            font-weight: 500; color: var(--text-secondary); margin-bottom: 1.5rem;
-            box-shadow: var(--shadow-sm);
-        }
-        .hero-badge span { color: var(--success); }
-        .hero-brand {
-            font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 800;
-            color: var(--text); letter-spacing: -1px; margin-bottom: 0.5rem;
-        }
-        .hero-brand-accent { color: var(--primary); }
-        .hero-tagline {
-            font-size: clamp(1rem, 2.5vw, 1.25rem); font-weight: 500;
-            color: var(--text-secondary); margin-bottom: 2.5rem; max-width: 600px;
-            margin-left: auto; margin-right: auto;
-        }
-        .sys-status {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
-            color: var(--text-tertiary); letter-spacing: 1px; margin-top: 1rem;
-        }
-        .sys-status-dot {
-            width: 6px; height: 6px; background: var(--success);
-            border-radius: 50%; animation: status-blink 2s ease-in-out infinite;
-        }
-        @keyframes status-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    /* DIVIDER */
+    .divider {
+      display: flex; align-items: center; gap: 1rem;
+      max-width: 200px; margin: 0 auto; padding: 3rem 0;
+    }
+    .divider::before, .divider::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent); opacity: 0.2;
+    }
+    .divider-dot {
+      width: 8px; height: 8px; background: var(--primary);
+      transform: rotate(45deg); opacity: 0.3;
+    }
 
-        /* ─── PILLARS (FlowForges) ─── */
-        .pillars {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.5rem; max-width: 800px; margin: 0 auto 3rem; padding: 0 1rem;
-        }
-        .pillar {
-            background: var(--surface); border: 1px solid var(--border-light);
-            border-radius: var(--radius); padding: 2rem; text-align: center;
-            box-shadow: var(--shadow-sm); transition: transform 0.2s, box-shadow 0.2s;
-            position: relative;
-        }
-        .pillar:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-        .pillar-icon {
-            width: 48px; height: 48px; background: var(--primary-light);
-            border-radius: 12px; display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 0.8rem; font-size: 1.3rem; position: relative;
-        }
-        .pillar h3 {
-            font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;
-            font-weight: 700; color: var(--primary); letter-spacing: 1.5px;
-            text-transform: uppercase; margin-bottom: 0.4rem;
-        }
-        .pillar p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
+    /* APPS */
+    .section { max-width: 960px; margin: 0 auto; padding: 0 2rem 5rem; position: relative; z-index: 1; }
+    .section-label {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.72rem;
+      font-weight: 700; color: var(--accent); letter-spacing: 2px;
+      text-transform: uppercase; text-align: center; margin-bottom: 2.5rem;
+    }
+    .section-label::before { content: '[ '; opacity: 0.4; }
+    .section-label::after { content: ' ]'; opacity: 0.4; }
 
-        /* ─── SECTIONS ─── */
-        .section { max-width: 1100px; margin: 0 auto; padding: 4rem 1.5rem; }
-        .section-header { text-align: center; margin-bottom: 3rem; }
-        .section-label {
-            font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
-            font-weight: 700; color: var(--accent); letter-spacing: 2px;
-            text-transform: uppercase; margin-bottom: 0.5rem;
-        }
-        .section-title {
-            font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800;
-            color: var(--text); margin-bottom: 0.5rem;
-        }
-        .section-desc {
-            font-size: 1rem; color: var(--text-secondary);
-            max-width: 600px; margin: 0 auto;
-        }
+    .apps-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;
+    }
+    .app-card {
+      background: var(--surface); border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg); padding: 2rem;
+      box-shadow: var(--shadow-sm); position: relative; overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .app-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .app-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    }
+    .app-card.pivot::before {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+    }
+    .app-card.vigie::before { background: linear-gradient(90deg, #C62828, #EF5350); }
+    .card-top { display: flex; align-items: center; justify-content: space-between; }
+    .card-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+    }
+    .card-icon.teal { background: var(--primary-light); }
+    .card-icon.red { background: #FFEBEE; }
+    .card-status {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.68rem;
+      font-weight: 700; padding: 4px 10px; border-radius: 20px; letter-spacing: 0.5px;
+    }
+    .card-status.beta { background: var(--accent-light); color: #92660A; border: 1px solid rgba(212,168,67,0.3); }
+    .card-name { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.5px; }
+    .card-tagline { font-size: 0.9rem; color: var(--text-secondary); flex: 1; }
+    .card-cta {
+      display: inline-flex; align-items: center; gap: 6px; align-self: flex-start;
+      font-size: 0.85rem; font-weight: 600; padding: 9px 16px;
+      border-radius: var(--radius); text-decoration: none; transition: all 0.2s;
+    }
+    .card-cta.teal-btn { background: var(--primary); color: #fff; }
+    .card-cta.teal-btn:hover { background: var(--primary-dark); }
+    .card-cta.red-btn { background: #C62828; color: #fff; }
+    .card-cta.red-btn:hover { background: #B71C1C; }
 
-        /* ─── PRODUCT HIGHLIGHT ─── */
-        .product-highlight {
-            background: var(--surface); border: 1px solid var(--border-light);
-            border-radius: var(--radius-lg); padding: 3rem 2rem; text-align: center;
-            box-shadow: var(--shadow-md); max-width: 900px; margin: 0 auto 2rem;
-            position: relative; overflow: hidden;
-        }
-        .product-highlight::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
-            background-size: 200% 100%; animation: gradient-shift 4s ease infinite;
-        }
-        .product-logo {
-            display: block; width: clamp(180px, 35vw, 320px); height: auto;
-            margin: 0 auto 0.5rem;
-            filter: drop-shadow(0 0 30px rgba(53,138,159,0.2));
-        }
-        .product-subtitle {
-            font-size: 0.85rem; color: var(--text-tertiary);
-            font-family: 'JetBrains Mono', monospace; letter-spacing: 1px;
-            margin-bottom: 0.8rem;
-        }
-        .product-tagline {
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem); font-weight: 700;
-            color: var(--text); margin-bottom: 1rem;
-        }
-        .product-desc {
-            font-size: 0.95rem; color: var(--text-secondary); max-width: 550px;
-            margin: 0 auto 1.5rem; line-height: 1.7;
-        }
-        .product-pills {
-            display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap;
-        }
-        .product-pill {
-            background: var(--primary-light); color: var(--primary);
-            padding: 0.35rem 0.9rem; border-radius: 100px; font-size: 0.8rem;
-            font-weight: 600; border: 1px solid rgba(53,138,159,0.15);
-        }
+    /* STUDIO */
+    .studio {
+      text-align: center; max-width: 520px; margin: 0 auto;
+      padding: 0 2rem 5rem; position: relative; z-index: 1;
+    }
+    .studio h2 {
+      font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem; letter-spacing: -0.5px;
+    }
+    .studio p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.75; }
 
-        /* ─── FEATURES ─── */
-        .features-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;
-        }
-        .feature-card {
-            background: var(--surface); border: 1px solid var(--border-light);
-            border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow-sm);
-            transition: transform 0.2s, box-shadow 0.2s; position: relative;
-        }
-        .feature-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-        .feature-icon {
-            width: 44px; height: 44px; border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.2rem; margin-bottom: 1rem; position: relative;
-        }
-        .feature-icon.cyan { background: var(--primary-light); }
-        .feature-icon.gold { background: var(--accent-light); }
-        .feature-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
-        .feature-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+    /* CONTACT */
+    .contact {
+      text-align: center; padding: 0 2rem 6rem; position: relative; z-index: 1;
+    }
+    .contact-box {
+      display: inline-flex; flex-direction: column; align-items: center; gap: 1.25rem;
+      background: var(--surface); border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg); padding: 2.5rem 3rem;
+      box-shadow: var(--shadow-sm); max-width: 420px;
+    }
+    .contact-box p { font-size: 0.95rem; color: var(--text-secondary); }
+    .contact-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--primary); color: #fff;
+      font-size: 0.9rem; font-weight: 600; padding: 11px 22px;
+      border-radius: var(--radius); text-decoration: none; transition: background 0.2s;
+    }
+    .contact-link:hover { background: var(--primary-dark); }
 
-        /* ─── USE CASES ─── */
-        .usecases-bg {
-            background: var(--surface);
-            border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);
-        }
-        .usecase-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;
-        }
-        .usecase-card {
-            background: var(--bg); border: 1px solid var(--border-light);
-            border-radius: var(--radius); padding: 1.8rem; position: relative; overflow: hidden;
-        }
-        .usecase-card::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
-            background-size: 200% 100%; animation: gradient-shift 4s ease infinite;
-        }
-        .usecase-number {
-            font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
-            font-weight: 700; color: var(--primary); letter-spacing: 1px;
-            margin-bottom: 0.5rem; position: relative; display: inline-block;
-        }
-        .usecase-number::before { content: '>'; margin-right: 0.3rem; opacity: 0.5; }
-        .usecase-card h3 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
-        .usecase-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
+    /* FOOTER */
+    footer {
+      text-align: center; padding: 1.5rem; border-top: 1px solid var(--border-light);
+      font-size: 0.78rem; color: var(--text-tertiary);
+      position: relative; z-index: 1;
+    }
+    footer a { color: var(--text-tertiary); text-decoration: none; }
+    footer a:hover { color: var(--primary); }
 
-        /* ─── BENEFITS ─── */
-        .benefits-list {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem; max-width: 900px; margin: 0 auto;
-        }
-        .benefit-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1rem; }
-        .benefit-check {
-            flex-shrink: 0; width: 28px; height: 28px; background: var(--primary-light);
-            border-radius: 8px; display: flex; align-items: center; justify-content: center;
-            color: var(--primary); font-size: 0.85rem; font-weight: 700;
-        }
-        .benefit-text h4 { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.2rem; }
-        .benefit-text p { font-size: 0.85rem; color: var(--text-secondary); }
-
-        /* ─── SERVICES ─── */
-        .services-bg {
-            background: linear-gradient(180deg, var(--bg) 0%, var(--primary-light) 50%, var(--bg) 100%);
-        }
-        .services-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem; max-width: 800px; margin: 0 auto;
-        }
-        .service-card {
-            background: var(--surface); border: 1px solid var(--border-light);
-            border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow-sm);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .service-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-        .service-icon {
-            width: 48px; height: 48px; background: var(--accent-light);
-            border-radius: 12px; display: flex; align-items: center; justify-content: center;
-            font-size: 1.3rem; margin-bottom: 1rem;
-        }
-        .service-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
-        .service-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
-        .service-examples {
-            margin-top: 0.8rem; display: flex; flex-wrap: wrap; gap: 0.4rem;
-        }
-        .service-tag {
-            background: var(--bg); color: var(--text-tertiary);
-            padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem;
-            font-weight: 500; border: 1px solid var(--border-light);
-        }
-
-        /* ─── CTA ─── */
-        .cta-section {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-radius: var(--radius-lg); padding: 3rem 2rem; text-align: center;
-            margin: 3rem auto; max-width: 800px; box-shadow: var(--shadow-lg);
-            position: relative; overflow: hidden;
-        }
-        .cta-section > * { position: relative; z-index: 1; }
-        .cta-section h2 { color: #fff; font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem; }
-        .cta-section p { color: rgba(255,255,255,0.85); font-size: 1rem; margin-bottom: 1.5rem; }
-        .cta-badges { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-        .cta-badge {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
-            color: #fff; padding: 0.7rem 1.3rem; border-radius: 10px;
-            font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: background 0.2s;
-        }
-        .cta-badge:hover { background: rgba(255,255,255,0.25); }
-
-        /* ─── PRIVACY ─── */
-        .privacy-section { background: var(--surface); border-top: 1px solid var(--border-light); }
-        .privacy-inner { max-width: 800px; margin: 0 auto; padding: 4rem 1.5rem; }
-        .privacy-lang-switch {
-            display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 2rem;
-        }
-        .privacy-lang-switch button {
-            background: var(--bg); color: var(--text-secondary); border: 1px solid var(--border);
-            padding: 0.4rem 1rem; border-radius: 6px; cursor: pointer;
-            font-size: 0.85rem; font-weight: 500; font-family: 'Inter', sans-serif; transition: all 0.2s;
-        }
-        .privacy-lang-switch button.active {
-            color: var(--primary); border-color: var(--primary); background: var(--primary-light);
-        }
-        .privacy-content h3 { font-size: 1rem; font-weight: 700; color: var(--text); margin: 1.5rem 0 0.5rem; }
-        .privacy-content p, .privacy-content li {
-            font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7;
-        }
-        .privacy-content ul { padding-left: 1.5rem; margin: 0.5rem 0; }
-        .privacy-content li { margin-bottom: 0.3rem; }
-        .privacy-content strong { color: var(--text); }
-        .privacy-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem; }
-        .privacy-content th, .privacy-content td {
-            border: 1px solid var(--border); padding: 0.6rem 0.8rem; text-align: left;
-        }
-        .privacy-content th { background: var(--bg); color: var(--text); font-weight: 600; }
-        .privacy-content td { color: var(--text-secondary); }
-        .privacy-content a { color: var(--primary); }
-
-        /* ─── CONTACT ─── */
-        .contact-section {
-            max-width: 600px; margin: 0 auto; padding: 4rem 1.5rem; text-align: center;
-        }
-        .contact-links {
-            display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;
-        }
-        .contact-link {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            background: var(--surface); border: 1px solid var(--border); color: var(--text);
-            padding: 0.8rem 1.5rem; border-radius: var(--radius); font-size: 0.9rem;
-            font-weight: 500; text-decoration: none; transition: all 0.2s; box-shadow: var(--shadow-sm);
-        }
-        .contact-link:hover {
-            border-color: var(--primary); color: var(--primary); box-shadow: var(--shadow-md);
-        }
-
-        /* ─── FOOTER ─── */
-        footer {
-            text-align: center; padding: 2rem 1.5rem; color: var(--text-tertiary);
-            font-size: 0.8rem; border-top: 1px solid var(--border-light);
-        }
-        footer a { color: var(--text-secondary); text-decoration: none; }
-        footer a:hover { color: var(--primary); }
-        .footer-links {
-            display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 0.8rem;
-        }
-        .footer-links a { font-size: 0.82rem; font-weight: 500; }
-
-        /* ─── RESPONSIVE ─── */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .nav-links.open {
-                display: flex; flex-direction: column; position: absolute;
-                top: 60px; left: 0; right: 0; background: var(--surface);
-                border-bottom: 1px solid var(--border); padding: 1rem;
-                gap: 1rem; box-shadow: var(--shadow-md);
-            }
-            .nav-mobile-toggle { display: block; }
-            .hero { padding: 6.5rem 1.5rem 3rem; }
-            .pillars { grid-template-columns: 1fr; }
-            .features-grid { grid-template-columns: 1fr; }
-            .usecase-grid { grid-template-columns: 1fr; }
-            .benefits-list { grid-template-columns: 1fr; }
-            .services-grid { grid-template-columns: 1fr; }
-            .cta-section { margin: 2rem 1rem; }
-        }
-
-        /* ─── WEYLAND EFFECTS ─── */
-        .hero::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(53,138,159,0.02) 2px, rgba(53,138,159,0.02) 4px);
-            pointer-events: none; z-index: 1;
-        }
-        .hero::after {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-            background: linear-gradient(90deg, transparent 0%, var(--primary) 50%, transparent 100%);
-            opacity: 0.15; z-index: 3; animation: scanline-sweep 8s linear infinite; pointer-events: none;
-        }
-        @keyframes scanline-sweep { 0% { top: 0; } 100% { top: 100%; } }
-
-        body::before {
-            content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background-image: radial-gradient(circle, var(--primary) 0.5px, transparent 0.5px);
-            background-size: 32px 32px; opacity: 0.025; pointer-events: none; z-index: 0;
-        }
-
-        .feature-card::before, .feature-card::after {
-            content: ''; position: absolute; width: 18px; height: 18px;
-            border-color: var(--primary); border-style: solid; opacity: 0.2;
-            transition: opacity 0.3s, width 0.3s, height 0.3s;
-        }
-        .feature-card::before { top: 8px; left: 8px; border-width: 2px 0 0 2px; }
-        .feature-card::after { bottom: 8px; right: 8px; border-width: 0 2px 2px 0; }
-        .feature-card:hover::before, .feature-card:hover::after { opacity: 0.6; width: 24px; height: 24px; }
-
-        .hud-bracket-tr, .hud-bracket-bl {
-            position: absolute; width: 18px; height: 18px;
-            border-color: var(--primary); border-style: solid; opacity: 0.2;
-            transition: opacity 0.3s; pointer-events: none;
-        }
-        .hud-bracket-tr { top: 8px; right: 8px; border-width: 2px 2px 0 0; }
-        .hud-bracket-bl { bottom: 8px; left: 8px; border-width: 0 0 2px 2px; }
-        .feature-card:hover .hud-bracket-tr, .feature-card:hover .hud-bracket-bl { opacity: 0.6; }
-
-        .pillar::before {
-            content: ''; position: absolute; top: 6px; right: 6px; width: 14px; height: 14px;
-            border-top: 2px solid var(--accent); border-right: 2px solid var(--accent); opacity: 0.2;
-            transition: opacity 0.3s;
-        }
-        .pillar::after {
-            content: ''; position: absolute; bottom: 6px; left: 6px; width: 14px; height: 14px;
-            border-bottom: 2px solid var(--accent); border-left: 2px solid var(--accent); opacity: 0.2;
-            transition: opacity 0.3s;
-        }
-        .pillar:hover::before, .pillar:hover::after { opacity: 0.6; }
-        .pillar:hover .pillar-icon::after {
-            content: ''; position: absolute; top: -4px; left: -4px; right: -4px; bottom: -4px;
-            border: 1px solid var(--primary); border-radius: 16px; opacity: 0;
-            animation: hud-pulse 1.5s ease-out infinite;
-        }
-        @keyframes hud-pulse { 0% { opacity: 0.4; transform: scale(1); } 100% { opacity: 0; transform: scale(1.3); } }
-        @keyframes gradient-shift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-
-        .cta-section::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-            background-size: 32px 32px; pointer-events: none;
-        }
-        .cta-section::after {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.15) 100%);
-            pointer-events: none;
-        }
-
-        .tech-divider {
-            display: flex; align-items: center; justify-content: center; gap: 0.8rem;
-            margin: 3rem auto; max-width: 400px; padding: 0 1rem;
-        }
-        .tech-divider::before, .tech-divider::after {
-            content: ''; flex: 1; height: 1px;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent); opacity: 0.25;
-        }
-        .tech-divider-dot {
-            width: 8px; height: 8px; background: var(--primary);
-            transform: rotate(45deg); opacity: 0.35; position: relative;
-        }
-        .tech-divider-dot::after {
-            content: ''; position: absolute; top: -3px; left: -3px; right: -3px; bottom: -3px;
-            border: 1px solid var(--primary); transform: rotate(0deg); opacity: 0.3;
-        }
-
-        .section-label::before { content: '['; opacity: 0.3; margin-right: 0.4rem; font-family: 'JetBrains Mono', monospace; }
-        .section-label::after { content: ']'; opacity: 0.3; margin-left: 0.4rem; font-family: 'JetBrains Mono', monospace; }
-
-        .nav-brand:hover { text-shadow: 0 0 16px rgba(53,138,159,0.4); }
-        .feature-card:hover .feature-icon { box-shadow: 0 0 16px rgba(53,138,159,0.15); }
-        .feature-card:hover .feature-icon.gold { box-shadow: 0 0 16px rgba(212,168,67,0.15); }
-        .benefit-item:hover .benefit-check { box-shadow: 0 0 12px rgba(53,138,159,0.15); }
-        .contact-link:hover { box-shadow: var(--shadow-md), 0 0 0 1px var(--primary), inset 0 0 12px rgba(53,138,159,0.04); }
-
-        footer::before {
-            content: ''; display: block; width: 60px; height: 2px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            margin: 0 auto 1.5rem; opacity: 0.3;
-        }
-
-        @media (prefers-reduced-motion: no-preference) {
-            .pillar, .feature-card, .usecase-card, .benefit-item, .service-card {
-                opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards;
-            }
-            @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-            .pillar:nth-child(1) { animation-delay: 0.1s; }
-            .pillar:nth-child(2) { animation-delay: 0.2s; }
-        }
-
-        /* ─── CATALOGUE ─── */
-        .catalogue-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 1.5rem; max-width: 800px; margin: 0 auto;
-        }
-        .app-card {
-            background: var(--surface); border: 1px solid var(--border-light);
-            border-radius: var(--radius-lg); padding: 2rem;
-            box-shadow: var(--shadow-sm); position: relative; overflow: hidden;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .app-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-        .app-card::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-        }
-        .app-card.pivot-card::before {
-            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
-            background-size: 200% 100%; animation: gradient-shift 4s ease infinite;
-        }
-        .app-card.vigie-card::before { background: linear-gradient(90deg, #D32F2F, #EF5350); }
-        .app-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
-        .app-card-icon {
-            width: 48px; height: 48px; border-radius: 12px;
-            display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
-        }
-        .app-card-icon.cyan { background: var(--primary-light); }
-        .app-card-icon.red { background: #FFEBEE; }
-        .app-card-status {
-            font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; font-weight: 700;
-            padding: 4px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px;
-        }
-        .app-card-status.soon {
-            background: var(--accent-light); color: var(--accent);
-            border: 1px solid rgba(212,168,67,0.3);
-        }
-        .app-card-status.beta {
-            background: #FFF3E0; color: #E65100;
-            border: 1px solid rgba(230,81,0,0.2);
-        }
-        .app-card h3 { font-size: 1.15rem; font-weight: 700; color: var(--text); margin-bottom: 0.3rem; }
-        .app-card .app-card-sub {
-            font-size: 0.8rem; color: var(--text-tertiary);
-            font-family: 'JetBrains Mono', monospace; margin-bottom: 0.8rem;
-        }
-        .app-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem; }
-        .app-card-link {
-            display: inline-flex; align-items: center; gap: 6px;
-            font-size: 0.85rem; font-weight: 600; padding: 8px 16px;
-            border-radius: var(--radius); text-decoration: none;
-            transition: all 0.2s;
-        }
-        .app-card-link.red-btn { background: #D32F2F; color: white; }
-        .app-card-link.red-btn:hover { background: #B71C1C; }
-        .app-card-link.disabled {
-            background: var(--bg); color: var(--text-tertiary);
-            border: 1px solid var(--border); cursor: default;
-        }
-        @media (max-width: 640px) { .catalogue-grid { grid-template-columns: 1fr; } }
-    </style>
+    @media (max-width: 640px) {
+      .apps-grid { grid-template-columns: 1fr; }
+      .contact-box { padding: 2rem 1.5rem; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav" id="navbar">
-    <div class="nav-inner">
-        <a href="#" class="nav-brand">
-            <div class="nav-brand-icon">FF</div>
-            <span class="nav-brand-text">FlowForges</span>
-        </a>
-        <div class="nav-links" id="navLinks">
-            <a href="#pivot" data-fr="Produits" data-en="Products">Produits</a>
-            <a href="#services" data-fr="Services" data-en="Services">Services</a>
-            <a href="#privacy" data-fr="Confidentialite" data-en="Privacy">Confidentialite</a>
-            <a href="#contact">Contact</a>
-            <button class="lang-btn" onclick="toggleLang()" id="langToggle">EN</button>
-        </div>
-        <button class="nav-mobile-toggle" onclick="toggleMenu()" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </button>
-    </div>
+<nav>
+  <div class="nav-inner">
+    <a class="nav-brand" href="#">
+      <div class="nav-mark">FF</div>
+      FlowForges
+    </a>
+    <a class="nav-contact" href="mailto:contact@flowforges.fr">Contact</a>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-    <div class="hero-badge">
-        <span>&#9679;</span> <span data-fr="Studio independant — Apps & Automatisations" data-en="Independent studio — Apps & Automations">Studio independant — Apps & Automatisations</span>
-    </div>
-    <h1 class="hero-brand">Flow<span class="hero-brand-accent">Forges</span></h1>
-    <p class="hero-tagline" data-fr="Des outils intelligents pour les pros qui bougent. Apps mobiles offline-first. Automatisations sur mesure." data-en="Smart tools for professionals on the move. Offline-first mobile apps. Custom automations.">Des outils intelligents pour les pros qui bougent. Apps mobiles offline-first. Automatisations sur mesure.</p>
-
-    <div class="pillars">
-        <div class="pillar">
-            <div class="pillar-icon">&#128241;</div>
-            <h3 data-fr="Apps mobiles" data-en="Mobile apps">Apps mobiles</h3>
-            <p data-fr="Des outils de terrain qui fonctionnent sans reseau. Vos donnees restent sur votre appareil. Pas d'abonnement." data-en="Field tools that work without network. Your data stays on your device. No subscription.">Des outils de terrain qui fonctionnent sans reseau. Vos donnees restent sur votre appareil. Pas d'abonnement.</p>
-        </div>
-        <div class="pillar">
-            <div class="pillar-icon">&#9889;</div>
-            <h3>Automatisations</h3>
-            <p data-fr="Workflows sur mesure pour eliminer vos taches repetitives. Connexion entre vos outils existants. Gain de temps immediat." data-en="Custom workflows to eliminate repetitive tasks. Connect your existing tools. Immediate time savings.">Workflows sur mesure pour eliminer vos taches repetitives. Connexion entre vos outils existants. Gain de temps immediat.</p>
-        </div>
-    </div>
-
-    <div class="sys-status">
-        <div class="sys-status-dot"></div>
-        <span>SYS.ONLINE // FlowForges v1.0</span>
-    </div>
+  <div class="hero-badge">
+    <span class="badge-dot"></span>
+    Studio indépendant — Apps mobiles
+  </div>
+  <h1>Flow<em>Forges</em></h1>
+  <p>Des outils mobiles pensés pour le terrain. Simples, fiables, utiles.</p>
+  <div class="hero-sys">
+    <span class="badge-dot"></span>
+    SYS.ONLINE // v2.0
+  </div>
 </section>
 
-<!-- TECH DIVIDER -->
-<div class="tech-divider"><div class="tech-divider-dot"></div></div>
+<div class="divider"><div class="divider-dot"></div></div>
 
-<!-- CATALOGUE -->
-<section class="section" id="apps">
-    <div class="section-header">
-        <p class="section-label">Catalogue</p>
-        <h2 class="section-title" data-fr="Nos applications" data-en="Our apps">Nos applications</h2>
-        <p class="section-desc" data-fr="Des outils mobiles concus pour le terrain. Bientot disponibles sur iOS et Android." data-en="Mobile tools built for the field. Coming soon on iOS and Android.">Des outils mobiles concus pour le terrain. Bientot disponibles sur iOS et Android.</p>
-    </div>
-    <div class="catalogue-grid">
-        <div class="app-card pivot-card">
-            <div class="app-card-header">
-                <div class="app-card-icon cyan">🏠</div>
-                <span class="app-card-status beta" data-fr="Beta fermee" data-en="Closed beta">Beta fermee</span>
-            </div>
-            <h3>PIVOT</h3>
-            <p class="app-card-sub" data-fr="Visites immobilieres" data-en="Property visits">Visites immobilieres</p>
-            <p data-fr="L'application de visite immobiliere pour les professionnels qui veulent aller a l'essentiel." data-en="The property visit app for professionals who want to focus on what matters.">L'application de visite immobiliere pour les professionnels qui veulent aller a l'essentiel.</p>
-            <a class="app-card-link red-btn" href="#contact" data-fr="Rejoindre la beta →" data-en="Join the beta →">Rejoindre la beta →</a>
-        </div>
-        <div class="app-card vigie-card">
-            <div class="app-card-header">
-                <div class="app-card-icon red">📋</div>
-                <span class="app-card-status beta" data-fr="Beta fermee" data-en="Closed beta">Beta fermee</span>
-            </div>
-            <h3>VigieContrat</h3>
-            <p class="app-card-sub" data-fr="Analyse de contrats" data-en="Contract analysis">Analyse de contrats</p>
-            <p data-fr="Vos contrats analyses en 30 secondes. Identifiez ce qui peut vous nuire avant de signer." data-en="Your contracts analysed in 30 seconds. Spot what could hurt you before signing.">Vos contrats analyses en 30 secondes. Identifiez ce qui peut vous nuire avant de signer.</p>
-            <a class="app-card-link red-btn" href="vigiecontrat/index.html" data-fr="Rejoindre la beta →" data-en="Join the beta →">Rejoindre la beta →</a>
-        </div>
-    </div>
-</section>
-
-<!-- TECH DIVIDER -->
-<div class="tech-divider"><div class="tech-divider-dot"></div></div>
-
-<!-- PIVOT PRODUCT -->
-<section class="section" id="pivot">
-    <div class="section-header">
-        <p class="section-label" data-fr="Notre app phare" data-en="Our flagship app">Notre app phare</p>
-    </div>
-
-    <div class="product-highlight">
-        <img src="logo-pivot.png" alt="PIVOT" class="product-logo">
-        <p class="product-subtitle">Property Intelligent Visit Offline Tool</p>
-        <p class="product-tagline" data-fr="Chaque detail compte. PIVOT les capture tous." data-en="Every detail matters. PIVOT captures them all.">Chaque detail compte. PIVOT les capture tous.</p>
-        <p class="product-desc" data-fr="L'outil mobile tout-en-un pour les visites immobilieres. Checklists, photos annotees, notes audio, rapports PDF. 100% hors-ligne, zero-knowledge." data-en="The all-in-one mobile tool for property visits. Checklists, annotated photos, audio notes, PDF reports. 100% offline, zero-knowledge.">L'outil mobile tout-en-un pour les visites immobilieres. Checklists, photos annotees, notes audio, rapports PDF. 100% hors-ligne, zero-knowledge.</p>
-        <div class="product-pills">
-            <span class="product-pill">iOS</span>
-            <span class="product-pill">Android</span>
-            <span class="product-pill">Offline</span>
-            <span class="product-pill" data-fr="Achat unique" data-en="One-time purchase">Achat unique</span>
-        </div>
-    </div>
-</section>
-
-<!-- FEATURES -->
-<section class="section" id="features">
-    <div class="section-header">
-        <p class="section-label" data-fr="Fonctionnalites PIVOT" data-en="PIVOT Features">Fonctionnalites PIVOT</p>
-        <h2 class="section-title" data-fr="Tout ce qu'il faut. Rien de plus." data-en="Everything you need. Nothing more.">Tout ce qu'il faut. Rien de plus.</h2>
-        <p class="section-desc" data-fr="PIVOT remplace vos check-lists papier, vos applis photo, vos dictaphones et vos tableurs en un seul outil." data-en="PIVOT replaces your paper checklists, photo apps, voice recorders and spreadsheets in one tool.">PIVOT remplace vos check-lists papier, vos applis photo, vos dictaphones et vos tableurs en un seul outil.</p>
-    </div>
-    <div class="features-grid">
-        <div class="feature-card">
-            <div class="feature-icon cyan">&#128203;</div>
-            <h3 data-fr="Checklists intelligentes" data-en="Smart Checklists">Checklists intelligentes</h3>
-            <p data-fr="Templates pre-remplis par type de bien (maison, appartement, terrain, local commercial). Personnalisables, avec notes 1 a 5 et commentaires." data-en="Pre-filled templates by property type (house, apartment, land, commercial). Customizable, with 1-5 ratings and comments.">Templates pre-remplis par type de bien (maison, appartement, terrain, local commercial). Personnalisables, avec notes 1 a 5 et commentaires.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon gold">&#128247;</div>
-            <h3 data-fr="Photos et annotations" data-en="Photos &amp; Annotations">Photos et annotations</h3>
-            <p data-fr="Capturez des photos pendant la visite et annotez-les directement a l'ecran. Cerclez un defaut, flechez un detail." data-en="Capture photos during the visit and annotate them directly on screen. Circle a defect, arrow a detail.">Capturez des photos pendant la visite et annotez-les directement a l'ecran. Cerclez un defaut, flechez un detail.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon cyan">&#127908;</div>
-            <h3 data-fr="Notes audio" data-en="Audio Notes">Notes audio</h3>
-            <p data-fr="Enregistrez vos observations vocalement pendant que vous inspectez. Plus rapide que de taper sur un ecran." data-en="Record your observations by voice while you inspect. Faster than typing on a screen.">Enregistrez vos observations vocalement pendant que vous inspectez. Plus rapide que de taper sur un ecran.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon gold">&#128202;</div>
-            <h3 data-fr="Scoring automatique" data-en="Automatic Scoring">Scoring automatique</h3>
-            <p data-fr="Chaque categorie recoit une note automatique basee sur vos evaluations. Note globale du bien en un coup d'oeil." data-en="Each category gets an automatic score based on your ratings. Overall property score at a glance.">Chaque categorie recoit une note automatique basee sur vos evaluations. Note globale du bien en un coup d'oeil.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon cyan">&#128196;</div>
-            <h3 data-fr="Export multi-format" data-en="Multi-format Export">Export multi-format</h3>
-            <p data-fr="PDF professionnel, CSV pour Excel, JSON pour les developpeurs, ZIP complet avec tous les medias." data-en="Professional PDF, CSV for Excel, JSON for developers, complete ZIP with all media.">PDF professionnel, CSV pour Excel, JSON pour les developpeurs, ZIP complet avec tous les medias.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon gold">&#128200;</div>
-            <h3 data-fr="Fiche technique et financier" data-en="Technical &amp; Financial Sheet">Fiche technique et financier</h3>
-            <p data-fr="Prix, surface, prix/m2 auto-calcule, estimation travaux, priorites, infos vendeur. Tout au meme endroit." data-en="Price, area, auto-calculated price/sqm, work estimates, priorities, seller info. All in one place.">Prix, surface, prix/m2 auto-calcule, estimation travaux, priorites, infos vendeur. Tout au meme endroit.</p>
-        </div>
-    </div>
-</section>
-
-<!-- USE CASES -->
-<div class="usecases-bg">
-<section class="section" id="usecases">
-    <div class="section-header">
-        <p class="section-label" data-fr="Cas d'usage" data-en="Use Cases">Cas d'usage</p>
-        <h2 class="section-title" data-fr="Concu pour le terrain" data-en="Built for the field">Concu pour le terrain</h2>
-        <p class="section-desc" data-fr="Que vous soyez agent immobilier, marchand de biens, investisseur ou particulier en recherche." data-en="Whether you're a real estate agent, property merchant, investor or individual buyer.">Que vous soyez agent immobilier, marchand de biens, investisseur ou particulier en recherche.</p>
-    </div>
-    <div class="usecase-grid">
-        <div class="usecase-card">
-            <p class="usecase-number">01</p>
-            <h3 data-fr="Visite decouverte" data-en="Discovery Visit">Visite decouverte</h3>
-            <p data-fr="Creez un dossier complet avec photos, checklist et observations. Envoyez le rapport PDF le soir meme." data-en="Create a complete file with photos, checklist and observations. Send the PDF report the same evening.">Creez un dossier complet avec photos, checklist et observations. Envoyez le rapport PDF le soir meme.</p>
-        </div>
-        <div class="usecase-card">
-            <p class="usecase-number">02</p>
-            <h3 data-fr="Etat des lieux" data-en="Property Inspection">Etat des lieux</h3>
-            <p data-fr="Template avec checklist complete. Cochez, photographiez, annotez. Rapport pret en 15 minutes." data-en="Template with complete checklist. Check, photograph, annotate. Report ready in 15 minutes.">Template avec checklist complete. Cochez, photographiez, annotez. Rapport pret en 15 minutes.</p>
-        </div>
-        <div class="usecase-card">
-            <p class="usecase-number">03</p>
-            <h3 data-fr="Suivi de biens" data-en="Property Tracking">Suivi de biens</h3>
-            <p data-fr="Archivez l'etat initial de chaque bien. Comparez avec vos anciennes visites lors des controles." data-en="Archive the initial state of each property. Compare with your previous visits during inspections.">Archivez l'etat initial de chaque bien. Comparez avec vos anciennes visites lors des controles.</p>
-        </div>
-        <div class="usecase-card">
-            <p class="usecase-number">04</p>
-            <h3 data-fr="Estimation travaux" data-en="Work Estimation">Estimation travaux</h3>
-            <p data-fr="Notez les travaux par categorie avec priorites. Export CSV pour transmettre aux artisans ou au client." data-en="Note work items by category with priorities. CSV export to share with contractors or clients.">Notez les travaux par categorie avec priorites. Export CSV pour transmettre aux artisans ou au client.</p>
-        </div>
-    </div>
-</section>
-</div>
-
-<!-- TECH DIVIDER -->
-<div class="tech-divider"><div class="tech-divider-dot"></div></div>
-
-<!-- BENEFITS -->
-<section class="section" id="benefits">
-    <div class="section-header">
-        <p class="section-label" data-fr="Benefices" data-en="Benefits">Benefices</p>
-        <h2 class="section-title" data-fr="Ce que ca change pour vous" data-en="What it changes for you">Ce que ca change pour vous</h2>
-    </div>
-    <div class="benefits-list">
-        <div class="benefit-item">
-            <div class="benefit-check">&#10003;</div>
-            <div class="benefit-text">
-                <h4 data-fr="Gain de temps" data-en="Time Saving">Gain de temps</h4>
-                <p data-fr="Plus besoin de retaper vos notes au bureau" data-en="No more retyping notes at the office">Plus besoin de retaper vos notes au bureau</p>
-            </div>
-        </div>
-        <div class="benefit-item">
-            <div class="benefit-check">&#10003;</div>
-            <div class="benefit-text">
-                <h4 data-fr="Professionnalisme" data-en="Professionalism">Professionnalisme</h4>
-                <p data-fr="Rapports soignes et coherents a chaque visite" data-en="Polished and consistent reports at every visit">Rapports soignes et coherents a chaque visite</p>
-            </div>
-        </div>
-        <div class="benefit-item">
-            <div class="benefit-check">&#10003;</div>
-            <div class="benefit-text">
-                <h4 data-fr="Tracabilite" data-en="Traceability">Tracabilite</h4>
-                <p data-fr="Tous vos dossiers de visite archives et retrouvables" data-en="All your visit files archived and searchable">Tous vos dossiers de visite archives et retrouvables</p>
-            </div>
-        </div>
-        <div class="benefit-item">
-            <div class="benefit-check">&#10003;</div>
-            <div class="benefit-text">
-                <h4 data-fr="Mobilite" data-en="Mobility">Mobilite</h4>
-                <p data-fr="Travaillez depuis le terrain, pas de double saisie" data-en="Work from the field, no double entry">Travaillez depuis le terrain, pas de double saisie</p>
-            </div>
-        </div>
-        <div class="benefit-item">
-            <div class="benefit-check">&#10003;</div>
-            <div class="benefit-text">
-                <h4 data-fr="Zero risque" data-en="Zero Risk">Zero risque</h4>
-                <p data-fr="Donnees locales, pas de fuite, pas d'abonnement" data-en="Local data, no leaks, no subscription">Donnees locales, pas de fuite, pas d'abonnement</p>
-            </div>
-        </div>
-        <div class="benefit-item">
-            <div class="benefit-check">&#10003;</div>
-            <div class="benefit-text">
-                <h4 data-fr="Multi-biens" data-en="Multi-property">Multi-biens</h4>
-                <p data-fr="Gerez des lots et immeubles avec sous-visites" data-en="Manage lots and buildings with sub-visits">Gerez des lots et immeubles avec sous-visites</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- TECH DIVIDER -->
-<div class="tech-divider"><div class="tech-divider-dot"></div></div>
-
-<!-- SERVICES -->
-<section class="section services-bg" id="services">
-    <div class="section-header">
-        <p class="section-label" data-fr="Services" data-en="Services">Services</p>
-        <h2 class="section-title" data-fr="Automatisations sur mesure" data-en="Custom Automations">Automatisations sur mesure</h2>
-        <p class="section-desc" data-fr="Vous perdez du temps sur des taches repetitives ? On connecte vos outils et on automatise vos flux." data-en="Wasting time on repetitive tasks? We connect your tools and automate your workflows.">Vous perdez du temps sur des taches repetitives ? On connecte vos outils et on automatise vos flux.</p>
-    </div>
-    <div class="services-grid">
-        <div class="service-card">
-            <div class="service-icon">&#128260;</div>
-            <h3 data-fr="Connexion d'outils" data-en="Tool Integration">Connexion d'outils</h3>
-            <p data-fr="On relie vos outils existants entre eux : CRM, email, agenda, facturation, tableurs. Plus de copier-coller." data-en="We connect your existing tools together: CRM, email, calendar, billing, spreadsheets. No more copy-paste.">On relie vos outils existants entre eux : CRM, email, agenda, facturation, tableurs. Plus de copier-coller.</p>
-            <div class="service-examples">
-                <span class="service-tag">Gmail</span>
-                <span class="service-tag">Google Sheets</span>
-                <span class="service-tag">Telegram</span>
-                <span class="service-tag">Notion</span>
-            </div>
-        </div>
-        <div class="service-card">
-            <div class="service-icon">&#128640;</div>
-            <h3 data-fr="Workflows intelligents" data-en="Smart Workflows">Workflows intelligents</h3>
-            <p data-fr="Relances automatiques, notifications, rapports periodiques, traitement de leads. On construit le flux, vous recoltez les resultats." data-en="Automatic follow-ups, notifications, periodic reports, lead processing. We build the flow, you reap the results.">Relances automatiques, notifications, rapports periodiques, traitement de leads. On construit le flux, vous recoltez les resultats.</p>
-            <div class="service-examples">
-                <span class="service-tag" data-fr="Relances" data-en="Follow-ups">Relances</span>
-                <span class="service-tag" data-fr="Rapports" data-en="Reports">Rapports</span>
-                <span class="service-tag" data-fr="Alertes" data-en="Alerts">Alertes</span>
-                <span class="service-tag" data-fr="Facturation" data-en="Billing">Facturation</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- CTA -->
+<!-- APPS -->
 <section class="section">
-    <div class="cta-section">
-        <h2 data-fr="Un projet ? Une question ?" data-en="Have a project? A question?">Un projet ? Une question ?</h2>
-        <p data-fr="Que ce soit pour PIVOT ou pour automatiser votre activite, on est la." data-en="Whether it's about PIVOT or automating your business, we're here.">Que ce soit pour PIVOT ou pour automatiser votre activite, on est la.</p>
-        <div class="cta-badges">
-            <a href="https://t.me/Pivot_Contact_bot" class="cta-badge" target="_blank" rel="noopener">
-                &#128172; <span data-fr="PIVOT — Parler a IRIS" data-en="PIVOT — Talk to IRIS">PIVOT — Parler a IRIS</span>
-            </a>
-            <a href="mailto:Hamsterjoevial@outlook.fr?subject=FlowForges%20-%20Demande%20automatisation" class="cta-badge" target="_blank" rel="noopener" style="border-color: var(--text-muted);">
-                &#9993; <span data-fr="Automatisations — Nous ecrire" data-en="Automations — Email us">Automatisations — Nous ecrire</span>
-            </a>
-        </div>
+  <p class="section-label">Applications</p>
+  <div class="apps-grid">
+
+    <div class="app-card pivot">
+      <div class="card-top">
+        <div class="card-icon teal">🏠</div>
+        <span class="card-status beta">Bêta fermée</span>
+      </div>
+      <div class="card-name">PIVOT</div>
+      <div class="card-tagline">L'outil de visite immobilière pour les professionnels.</div>
+      <a class="card-cta teal-btn" href="mailto:contact@flowforges.fr?subject=Beta PIVOT">Rejoindre la bêta →</a>
     </div>
+
+    <div class="app-card vigie">
+      <div class="card-top">
+        <div class="card-icon red">📋</div>
+        <span class="card-status beta">Bêta fermée</span>
+      </div>
+      <div class="card-name">VigieContrat</div>
+      <div class="card-tagline">Vos contrats analysés en 30 secondes.</div>
+      <a class="card-cta red-btn" href="vigiecontrat/index.html">Rejoindre la bêta →</a>
+    </div>
+
+  </div>
 </section>
 
-<!-- PRIVACY POLICY -->
-<section class="privacy-section" id="privacy">
-    <div class="privacy-inner">
-        <div class="section-header">
-            <p class="section-label">Legal</p>
-            <h2 class="section-title" data-fr="Politique de confidentialite — PIVOT" data-en="Privacy Policy — PIVOT">Politique de confidentialite — PIVOT</h2>
-            <p style="color: var(--text-tertiary); font-size: 0.85rem; margin-top: 0.5rem;">
-                <span data-fr="Derniere mise a jour : 22 fevrier 2026" data-en="Last updated: February 22, 2026">Derniere mise a jour : 22 fevrier 2026</span>
-            </p>
-        </div>
+<div class="divider"><div class="divider-dot"></div></div>
 
-        <div class="privacy-lang-switch">
-            <button class="active" onclick="showPrivacyLang('en', this)">English</button>
-            <button onclick="showPrivacyLang('fr', this)">Francais</button>
-        </div>
-
-        <div class="privacy-content">
-            <!-- ENGLISH -->
-            <div id="privacy-en">
-                <h3>1. Introduction</h3>
-                <p>PIVOT ("Property Intelligent Visit Offline Tool") is a mobile application developed by FlowForges designed to assist real estate professionals during property visits. This Privacy Policy describes how PIVOT handles your data.</p>
-                <p><strong>Our core principle: PIVOT is an offline-first, zero-knowledge application. We do not collect, transmit, or store any of your personal data on our servers. We have no servers.</strong></p>
-
-                <h3>2. Data Controller</h3>
-                <p>FlowForges<br>Contact: <a href="mailto:Hamsterjoevial@outlook.fr">Hamsterjoevial@outlook.fr</a></p>
-
-                <h3>3. Data We Collect</h3>
-                <p><strong>We collect NO personal data.</strong> PIVOT operates entirely on your device.</p>
-                <p>The following data is created and stored <strong>locally on your device only</strong>:</p>
-                <ul>
-                    <li><strong>Visit data</strong>: Property names, addresses, notes, checklist ratings, and comments you enter during property visits.</li>
-                    <li><strong>Media files</strong>: Photos, audio recordings, and videos you capture during visits.</li>
-                    <li><strong>App preferences</strong>: Language preference, onboarding completion status, Pro purchase status. Stored securely using your device's secure storage (iOS Keychain / Android Keystore).</li>
-                </ul>
-                <p><strong>None of this data is ever sent to us or to any third-party server unless you explicitly choose to export or back up your data</strong> (see Section 5).</p>
-
-                <h3>4. Device Permissions</h3>
-                <table>
-                    <tr><th>Permission</th><th>Purpose</th><th>When Requested</th></tr>
-                    <tr><td>Camera</td><td>Take photos and record videos during property visits</td><td>When you tap the photo/video capture button</td></tr>
-                    <tr><td>Microphone</td><td>Record audio notes during visits</td><td>When you tap the audio recording button</td></tr>
-                    <tr><td>Photo Library</td><td>Save exported photos</td><td>When you export visit data</td></tr>
-                </table>
-                <p>You can revoke these permissions at any time through your device's Settings.</p>
-
-                <h3>5. Cloud Backup (Optional)</h3>
-                <p>PIVOT offers <strong>optional</strong> cloud backup to:</p>
-                <ul>
-                    <li><strong>Google Drive</strong>: Using your own Google account</li>
-                    <li><strong>Microsoft OneDrive</strong>: Using your own Microsoft account</li>
-                </ul>
-                <ul>
-                    <li>Cloud backup is <strong>never automatic</strong>.</li>
-                    <li>Data is uploaded directly from your device to your own cloud storage account.</li>
-                    <li>We do not have access to your cloud storage accounts or the files you upload.</li>
-                    <li>Authentication tokens are stored securely on your device using platform-native secure storage.</li>
-                    <li>You can disconnect your cloud accounts at any time from within the app.</li>
-                </ul>
-
-                <h3>6. In-App Purchases</h3>
-                <p>PIVOT offers an optional one-time purchase ("PIVOT Pro") processed through Apple App Store (iOS) or Google Play Store (Android). We do not collect or store any payment information.</p>
-
-                <h3>7. Data Sharing</h3>
-                <p><strong>We do not share any data with third parties.</strong></p>
-                <ul>
-                    <li>No analytics or tracking SDKs are included.</li>
-                    <li>No advertising SDKs are included.</li>
-                    <li>No data is sent to any server (we have none).</li>
-                </ul>
-
-                <h3>8. Data Export</h3>
-                <p>You can export your visit data at any time in multiple formats (ZIP, PDF, CSV, JSON). Exported data belongs entirely to you.</p>
-
-                <h3>9. Data Retention</h3>
-                <p>All data is stored on your device. We retain nothing.</p>
-                <ul>
-                    <li><strong>Local data</strong>: Persists until you delete the visit or uninstall the app.</li>
-                    <li><strong>iOS Keychain data</strong>: May persist after app uninstallation (standard iOS behavior).</li>
-                    <li><strong>Cloud backup data</strong>: Persists in your cloud storage until you delete it manually.</li>
-                </ul>
-
-                <h3>10. Data Security</h3>
-                <ul>
-                    <li>Sensitive preferences stored using platform-native secure storage (iOS Keychain / Android Keystore).</li>
-                    <li>Visit data and media files stored in the app's private sandbox.</li>
-                    <li>No network transmission except optional cloud backup (HTTPS/TLS).</li>
-                </ul>
-
-                <h3>11. Children's Privacy</h3>
-                <p>PIVOT is designed for real estate professionals and is not intended for use by children under 16.</p>
-
-                <h3>12. Your Rights (GDPR / CCPA)</h3>
-                <p>Since all data is stored locally and we have no access to it:</p>
-                <ul>
-                    <li><strong>Right to access</strong>: Open the app to view all your data.</li>
-                    <li><strong>Right to export</strong>: Use the export feature.</li>
-                    <li><strong>Right to delete</strong>: Delete visits or uninstall the app.</li>
-                    <li><strong>Right to rectification</strong>: Edit your data directly in the app.</li>
-                </ul>
-
-                <h3>13. Changes to This Policy</h3>
-                <p>We may update this Privacy Policy. The "Last updated" date will be revised accordingly.</p>
-
-                <h3>14. Contact</h3>
-                <p>Telegram: <a href="https://t.me/Pivot_Contact_bot">IRIS — PIVOT Support</a><br>
-                Email: <a href="mailto:Hamsterjoevial@outlook.fr">Hamsterjoevial@outlook.fr</a></p>
-            </div>
-
-            <!-- FRENCH -->
-            <div id="privacy-fr" style="display:none;">
-                <h3>1. Introduction</h3>
-                <p>PIVOT ("Property Intelligent Visit Offline Tool") est une application mobile developpee par FlowForges concue pour accompagner les professionnels de l'immobilier lors des visites de biens.</p>
-                <p><strong>Notre principe fondamental : PIVOT est une application offline-first, zero-knowledge. Nous ne collectons, ne transmettons et ne stockons aucune de vos donnees personnelles sur nos serveurs. Nous n'avons pas de serveurs.</strong></p>
-
-                <h3>2. Responsable du traitement</h3>
-                <p>FlowForges<br>Contact : <a href="mailto:Hamsterjoevial@outlook.fr">Hamsterjoevial@outlook.fr</a></p>
-
-                <h3>3. Donnees collectees</h3>
-                <p><strong>Nous ne collectons AUCUNE donnee personnelle.</strong> PIVOT fonctionne entierement sur votre appareil.</p>
-                <ul>
-                    <li><strong>Donnees de visite</strong> : Noms, adresses, notes, evaluations et commentaires.</li>
-                    <li><strong>Fichiers medias</strong> : Photos, enregistrements audio et videos captures pendant les visites.</li>
-                    <li><strong>Preferences</strong> : Langue, statut d'onboarding, statut d'achat Pro.</li>
-                </ul>
-                <p><strong>Aucune de ces donnees n'est jamais envoyee a nos serveurs ou a un serveur tiers.</strong></p>
-
-                <h3>4. Permissions de l'appareil</h3>
-                <table>
-                    <tr><th>Permission</th><th>Usage</th><th>Quand</th></tr>
-                    <tr><td>Appareil photo</td><td>Photos et videos pendant les visites</td><td>Bouton capture</td></tr>
-                    <tr><td>Microphone</td><td>Notes audio pendant les visites</td><td>Bouton enregistrement</td></tr>
-                    <tr><td>Bibliotheque photos</td><td>Sauvegarder les photos exportees</td><td>Export de donnees</td></tr>
-                </table>
-
-                <h3>5. Sauvegarde Cloud (Optionnelle)</h3>
-                <p>Sauvegarde optionnelle vers Google Drive ou Microsoft OneDrive.</p>
-                <ul>
-                    <li>Jamais automatique. Donnees envoyees directement vers votre propre compte cloud.</li>
-                    <li>Nous n'avons pas acces a vos comptes cloud.</li>
-                    <li>Deconnexion possible a tout moment.</li>
-                </ul>
-
-                <h3>6. Achats integres</h3>
-                <p>Achat unique optionnel ("PIVOT Pro") traite par Apple ou Google. Aucune information de paiement collectee.</p>
-
-                <h3>7. Partage de donnees</h3>
-                <p><strong>Aucun partage avec des tiers.</strong> Aucun SDK d'analytics, de tracking ou publicitaire.</p>
-
-                <h3>8. Export de donnees</h3>
-                <p>Export a tout moment en ZIP, PDF, CSV, JSON. Les donnees exportees vous appartiennent.</p>
-
-                <h3>9. Conservation des donnees</h3>
-                <p>Toutes les donnees sont sur votre appareil. Nous ne conservons rien.</p>
-
-                <h3>10. Securite des donnees</h3>
-                <ul>
-                    <li>Stockage securise natif (Trousseau iOS / Android Keystore).</li>
-                    <li>Donnees dans le bac a sable prive de l'application.</li>
-                    <li>Aucune transmission reseau sauf sauvegarde cloud optionnelle (HTTPS/TLS).</li>
-                </ul>
-
-                <h3>11. Mineurs</h3>
-                <p>PIVOT n'est pas destine aux enfants de moins de 16 ans.</p>
-
-                <h3>12. Vos droits (RGPD)</h3>
-                <ul>
-                    <li><strong>Acces</strong> : Ouvrez l'application.</li>
-                    <li><strong>Portabilite</strong> : Fonction d'export.</li>
-                    <li><strong>Effacement</strong> : Supprimez les visites ou desinstallez.</li>
-                    <li><strong>Rectification</strong> : Modifiez directement dans l'app.</li>
-                </ul>
-
-                <h3>13. Modifications</h3>
-                <p>La date de derniere mise a jour sera revisee en consequence.</p>
-
-                <h3>14. Contact</h3>
-                <p>Telegram : <a href="https://t.me/Pivot_Contact_bot">IRIS — Support PIVOT</a><br>
-                Email : <a href="mailto:Hamsterjoevial@outlook.fr">Hamsterjoevial@outlook.fr</a></p>
-            </div>
-        </div>
-    </div>
+<!-- STUDIO -->
+<section class="studio">
+  <p class="section-label" style="margin-bottom:1.5rem;">Studio</p>
+  <h2>Construire des outils qu'on utiliserait soi-même.</h2>
+  <p>FlowForges est un studio indépendant. Chaque application naît d'un vrai besoin terrain — pas d'un brief. On construit lentement, on construit bien.</p>
 </section>
+
+<div class="divider"><div class="divider-dot"></div></div>
 
 <!-- CONTACT -->
-<section id="contact">
-    <div class="contact-section">
-        <div class="section-header">
-            <p class="section-label">Contact</p>
-            <h2 class="section-title" data-fr="Une question ?" data-en="Have a question?">Une question ?</h2>
-            <p class="section-desc" data-fr="Ecrivez a IRIS, notre assistante IA. Elle vous repond immediatement, et pour toute demande specifique, un humain prend le relais." data-en="Write to IRIS, our AI assistant. She responds instantly, and for any specific request, a real person takes over.">Ecrivez a IRIS, notre assistante IA. Elle vous repond immediatement, et pour toute demande specifique, un humain prend le relais.</p>
-        </div>
-        <div class="contact-links">
-            <a href="https://t.me/Pivot_Contact_bot" class="contact-link" target="_blank" rel="noopener" style="border-color: var(--primary); color: var(--primary); font-weight: 600;">
-                &#128172; <span data-fr="Ecrire a IRIS" data-en="Message IRIS">Ecrire a IRIS</span>
-            </a>
-        </div>
-    </div>
+<section class="contact">
+  <div class="contact-box">
+    <p class="section-label" style="margin:0;">Contact</p>
+    <p>Une question, un partenariat, une idée ?</p>
+    <a class="contact-link" href="mailto:contact@flowforges.fr">✉ contact@flowforges.fr</a>
+  </div>
 </section>
 
 <footer>
-    <div class="footer-links">
-        <a href="#pivot">PIVOT</a>
-        <a href="#services" data-fr="Services" data-en="Services">Services</a>
-        <a href="#privacy" data-fr="Confidentialite" data-en="Privacy">Confidentialite</a>
-        <a href="#contact">Contact</a>
-    </div>
-    <p>&copy; 2026 FlowForges. <span data-fr="Tous droits reserves." data-en="All rights reserved.">Tous droits reserves.</span></p>
+  <p>© 2026 FlowForges ·
+    <a href="vigiecontrat/privacy.html">Confidentialité VigieContrat</a> ·
+    <a href="#privacy-pivot">Confidentialité PIVOT</a>
+  </p>
 </footer>
-
-<script>
-let currentLang = 'fr';
-function toggleLang() {
-    currentLang = currentLang === 'fr' ? 'en' : 'fr';
-    document.getElementById('langToggle').textContent = currentLang === 'fr' ? 'EN' : 'FR';
-    document.documentElement.lang = currentLang;
-    document.querySelectorAll('[data-fr]').forEach(el => {
-        el.textContent = el.getAttribute('data-' + currentLang);
-    });
-}
-function showPrivacyLang(lang, btn) {
-    document.getElementById('privacy-en').style.display = lang === 'en' ? 'block' : 'none';
-    document.getElementById('privacy-fr').style.display = lang === 'fr' ? 'block' : 'none';
-    document.querySelectorAll('.privacy-lang-switch button').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-}
-function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
-window.addEventListener('scroll', () => {
-    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
-});
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => { document.getElementById('navLinks').classList.remove('open'); });
-});
-document.querySelectorAll('.feature-card').forEach(card => {
-    const tr = document.createElement('span'); tr.className = 'hud-bracket-tr';
-    const bl = document.createElement('span'); bl.className = 'hud-bracket-bl';
-    card.appendChild(tr); card.appendChild(bl);
-});
-</script>
 
 </body>
 </html>
