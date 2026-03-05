@@ -504,6 +504,65 @@
             .pillar:nth-child(1) { animation-delay: 0.1s; }
             .pillar:nth-child(2) { animation-delay: 0.2s; }
         }
+
+        /* ─── CATALOGUE ─── */
+        .catalogue-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem; max-width: 800px; margin: 0 auto;
+        }
+        .app-card {
+            background: var(--surface); border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg); padding: 2rem;
+            box-shadow: var(--shadow-sm); position: relative; overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .app-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .app-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+        }
+        .app-card.pivot-card::before {
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+            background-size: 200% 100%; animation: gradient-shift 4s ease infinite;
+        }
+        .app-card.vigie-card::before { background: linear-gradient(90deg, #D32F2F, #EF5350); }
+        .app-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+        .app-card-icon {
+            width: 48px; height: 48px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+        }
+        .app-card-icon.cyan { background: var(--primary-light); }
+        .app-card-icon.red { background: #FFEBEE; }
+        .app-card-status {
+            font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; font-weight: 700;
+            padding: 4px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .app-card-status.soon {
+            background: var(--accent-light); color: var(--accent);
+            border: 1px solid rgba(212,168,67,0.3);
+        }
+        .app-card-status.beta {
+            background: #FFF3E0; color: #E65100;
+            border: 1px solid rgba(230,81,0,0.2);
+        }
+        .app-card h3 { font-size: 1.15rem; font-weight: 700; color: var(--text); margin-bottom: 0.3rem; }
+        .app-card .app-card-sub {
+            font-size: 0.8rem; color: var(--text-tertiary);
+            font-family: 'JetBrains Mono', monospace; margin-bottom: 0.8rem;
+        }
+        .app-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem; }
+        .app-card-link {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 0.85rem; font-weight: 600; padding: 8px 16px;
+            border-radius: var(--radius); text-decoration: none;
+            transition: all 0.2s;
+        }
+        .app-card-link.red-btn { background: #D32F2F; color: white; }
+        .app-card-link.red-btn:hover { background: #B71C1C; }
+        .app-card-link.disabled {
+            background: var(--bg); color: var(--text-tertiary);
+            border: 1px solid var(--border); cursor: default;
+        }
+        @media (max-width: 640px) { .catalogue-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -551,7 +610,41 @@
 
     <div class="sys-status">
         <div class="sys-status-dot"></div>
-        <span>SYS.ONLINE // FlowForges v1.1.9</span>
+        <span>SYS.ONLINE // FlowForges v1.0</span>
+    </div>
+</section>
+
+<!-- TECH DIVIDER -->
+<div class="tech-divider"><div class="tech-divider-dot"></div></div>
+
+<!-- CATALOGUE -->
+<section class="section" id="apps">
+    <div class="section-header">
+        <p class="section-label">Catalogue</p>
+        <h2 class="section-title" data-fr="Nos applications" data-en="Our apps">Nos applications</h2>
+        <p class="section-desc" data-fr="Des outils mobiles concus pour le terrain. Bientot disponibles sur iOS et Android." data-en="Mobile tools built for the field. Coming soon on iOS and Android.">Des outils mobiles concus pour le terrain. Bientot disponibles sur iOS et Android.</p>
+    </div>
+    <div class="catalogue-grid">
+        <div class="app-card pivot-card">
+            <div class="app-card-header">
+                <div class="app-card-icon cyan">🏠</div>
+                <span class="app-card-status soon" data-fr="Bientot dispo" data-en="Coming soon">Bientot dispo</span>
+            </div>
+            <h3>PIVOT</h3>
+            <p class="app-card-sub">Property Intelligent Visit Offline Tool</p>
+            <p data-fr="L'outil de visite immobiliere tout-en-un. Checklists, photos annotees, rapports PDF. 100% hors-ligne, zero-knowledge." data-en="The all-in-one property visit tool. Checklists, annotated photos, PDF reports. 100% offline, zero-knowledge.">L'outil de visite immobiliere tout-en-un. Checklists, photos annotees, rapports PDF. 100% hors-ligne, zero-knowledge.</p>
+            <span class="app-card-link disabled" data-fr="En developpement" data-en="In development">En developpement</span>
+        </div>
+        <div class="app-card vigie-card">
+            <div class="app-card-header">
+                <div class="app-card-icon red">📋</div>
+                <span class="app-card-status beta" data-fr="Beta fermee" data-en="Closed beta">Beta fermee</span>
+            </div>
+            <h3>VigieContrat</h3>
+            <p class="app-card-sub">Analyse de contrats par IA</p>
+            <p data-fr="Photographiez votre contrat. En 30 secondes, identifiez les clauses abusives selon la liste DGCCRF. Rapport visuel + courriers de contestation." data-en="Photograph your contract. In 30 seconds, identify abusive clauses. Visual report + dispute letters.">Photographiez votre contrat. En 30 secondes, identifiez les clauses abusives selon la liste DGCCRF. Rapport visuel + courriers de contestation.</p>
+            <a class="app-card-link red-btn" href="vigiecontrat/index.html" data-fr="Rejoindre la beta →" data-en="Join the beta →">Rejoindre la beta →</a>
+        </div>
     </div>
 </section>
 
@@ -575,14 +668,6 @@
             <span class="product-pill">Offline</span>
             <span class="product-pill" data-fr="Achat unique" data-en="One-time purchase">Achat unique</span>
         </div>
-        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
-            <a href="#" class="store-btn" id="appstore-btn" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--text); color: #fff; padding: 0.7rem 1.3rem; border-radius: 10px; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; opacity: 0.5; pointer-events: none;">
-                &#63743; <span data-fr="App Store — Bientot" data-en="App Store — Coming soon">App Store — Bientot</span>
-            </a>
-            <a href="#" class="store-btn" id="playstore-btn" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--text); color: #fff; padding: 0.7rem 1.3rem; border-radius: 10px; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; opacity: 0.5; pointer-events: none;">
-                &#9654; <span data-fr="Google Play — Bientot" data-en="Google Play — Coming soon">Google Play — Bientot</span>
-            </a>
-        </div>
     </div>
 </section>
 
@@ -597,7 +682,7 @@
         <div class="feature-card">
             <div class="feature-icon cyan">&#128203;</div>
             <h3 data-fr="Checklists intelligentes" data-en="Smart Checklists">Checklists intelligentes</h3>
-            <p data-fr="Templates pre-remplis par type de bien (maison, appartement, immeuble, terrain, local commercial). Personnalisables, avec notes 1 a 5 et commentaires." data-en="Pre-filled templates by property type (house, apartment, building, land, commercial). Customizable, with 1-5 ratings and comments.">Templates pre-remplis par type de bien (maison, appartement, immeuble, terrain, local commercial). Personnalisables, avec notes 1 a 5 et commentaires.</p>
+            <p data-fr="Templates pre-remplis par type de bien (maison, appartement, terrain, local commercial). Personnalisables, avec notes 1 a 5 et commentaires." data-en="Pre-filled templates by property type (house, apartment, land, commercial). Customizable, with 1-5 ratings and comments.">Templates pre-remplis par type de bien (maison, appartement, terrain, local commercial). Personnalisables, avec notes 1 a 5 et commentaires.</p>
         </div>
         <div class="feature-card">
             <div class="feature-icon gold">&#128247;</div>
@@ -623,16 +708,6 @@
             <div class="feature-icon gold">&#128200;</div>
             <h3 data-fr="Fiche technique et financier" data-en="Technical &amp; Financial Sheet">Fiche technique et financier</h3>
             <p data-fr="Prix, surface, prix/m2 auto-calcule, estimation travaux, priorites, infos vendeur. Tout au meme endroit." data-en="Price, area, auto-calculated price/sqm, work estimates, priorities, seller info. All in one place.">Prix, surface, prix/m2 auto-calcule, estimation travaux, priorites, infos vendeur. Tout au meme endroit.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon cyan">&#129302;</div>
-            <h3 data-fr="IRIS — Assistante IA" data-en="IRIS — AI Assistant">IRIS — Assistante IA</h3>
-            <p data-fr="Une IA integree qui connait l'app sur le bout des doigts. Posez-lui vos questions, elle vous guide en temps reel pendant vos visites." data-en="A built-in AI that knows the app inside out. Ask your questions, she guides you in real time during your visits.">Une IA integree qui connait l'app sur le bout des doigts. Posez-lui vos questions, elle vous guide en temps reel pendant vos visites.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon gold">&#127968;</div>
-            <h3 data-fr="Bail et etat des lieux" data-en="Lease &amp; Property Inspection">Bail et etat des lieux</h3>
-            <p data-fr="Ecran dedie pour saisir les informations du bail. Ideal pour les gestionnaires locatifs et mandataires." data-en="Dedicated screen for lease information. Ideal for property managers and agents.">Ecran dedie pour saisir les informations du bail. Ideal pour les gestionnaires locatifs et mandataires.</p>
         </div>
     </div>
 </section>
@@ -767,8 +842,8 @@
         <h2 data-fr="Un projet ? Une question ?" data-en="Have a project? A question?">Un projet ? Une question ?</h2>
         <p data-fr="Que ce soit pour PIVOT ou pour automatiser votre activite, on est la." data-en="Whether it's about PIVOT or automating your business, we're here.">Que ce soit pour PIVOT ou pour automatiser votre activite, on est la.</p>
         <div class="cta-badges">
-            <a href="mailto:Hamsterjoevial@outlook.fr?subject=PIVOT%20-%20Question" class="cta-badge" target="_blank" rel="noopener">
-                &#128172; <span data-fr="PIVOT — Nous contacter" data-en="PIVOT — Contact us">PIVOT — Nous contacter</span>
+            <a href="https://t.me/Pivot_Contact_bot" class="cta-badge" target="_blank" rel="noopener">
+                &#128172; <span data-fr="PIVOT — Parler a IRIS" data-en="PIVOT — Talk to IRIS">PIVOT — Parler a IRIS</span>
             </a>
             <a href="mailto:Hamsterjoevial@outlook.fr?subject=FlowForges%20-%20Demande%20automatisation" class="cta-badge" target="_blank" rel="noopener" style="border-color: var(--text-muted);">
                 &#9993; <span data-fr="Automatisations — Nous ecrire" data-en="Automations — Email us">Automatisations — Nous ecrire</span>
@@ -784,7 +859,7 @@
             <p class="section-label">Legal</p>
             <h2 class="section-title" data-fr="Politique de confidentialite — PIVOT" data-en="Privacy Policy — PIVOT">Politique de confidentialite — PIVOT</h2>
             <p style="color: var(--text-tertiary); font-size: 0.85rem; margin-top: 0.5rem;">
-                <span data-fr="Derniere mise a jour : 2 mars 2026" data-en="Last updated: March 2, 2026">Derniere mise a jour : 2 mars 2026</span>
+                <span data-fr="Derniere mise a jour : 22 fevrier 2026" data-en="Last updated: February 22, 2026">Derniere mise a jour : 22 fevrier 2026</span>
             </p>
         </div>
 
@@ -881,8 +956,8 @@
                 <p>We may update this Privacy Policy. The "Last updated" date will be revised accordingly.</p>
 
                 <h3>14. Contact</h3>
-                <p>Email: <a href="mailto:Hamsterjoevial@outlook.fr">Hamsterjoevial@outlook.fr</a><br>
-                In-app: IRIS AI assistant (available directly inside PIVOT)</p>
+                <p>Telegram: <a href="https://t.me/Pivot_Contact_bot">IRIS — PIVOT Support</a><br>
+                Email: <a href="mailto:Hamsterjoevial@outlook.fr">Hamsterjoevial@outlook.fr</a></p>
             </div>
 
             <!-- FRENCH -->
@@ -953,8 +1028,8 @@
                 <p>La date de derniere mise a jour sera revisee en consequence.</p>
 
                 <h3>14. Contact</h3>
-                <p>Email : <a href="mailto:Hamsterjoevial@outlook.fr">Hamsterjoevial@outlook.fr</a><br>
-                Dans l'app : assistante IA IRIS (disponible directement dans PIVOT)</p>
+                <p>Telegram : <a href="https://t.me/Pivot_Contact_bot">IRIS — Support PIVOT</a><br>
+                Email : <a href="mailto:Hamsterjoevial@outlook.fr">Hamsterjoevial@outlook.fr</a></p>
             </div>
         </div>
     </div>
@@ -966,11 +1041,11 @@
         <div class="section-header">
             <p class="section-label">Contact</p>
             <h2 class="section-title" data-fr="Une question ?" data-en="Have a question?">Une question ?</h2>
-            <p class="section-desc" data-fr="IRIS, notre assistante IA, est integree directement dans l'app PIVOT. Pour toute autre question, ecrivez-nous par email." data-en="IRIS, our AI assistant, is built directly into the PIVOT app. For any other question, email us.">IRIS, notre assistante IA, est integree directement dans l'app PIVOT. Pour toute autre question, ecrivez-nous par email.</p>
+            <p class="section-desc" data-fr="Ecrivez a IRIS, notre assistante IA. Elle vous repond immediatement, et pour toute demande specifique, un humain prend le relais." data-en="Write to IRIS, our AI assistant. She responds instantly, and for any specific request, a real person takes over.">Ecrivez a IRIS, notre assistante IA. Elle vous repond immediatement, et pour toute demande specifique, un humain prend le relais.</p>
         </div>
         <div class="contact-links">
-            <a href="mailto:Hamsterjoevial@outlook.fr?subject=Contact%20FlowForges" class="contact-link" target="_blank" rel="noopener" style="border-color: var(--primary); color: var(--primary); font-weight: 600;">
-                &#9993; <span data-fr="Nous ecrire" data-en="Email us">Nous ecrire</span>
+            <a href="https://t.me/Pivot_Contact_bot" class="contact-link" target="_blank" rel="noopener" style="border-color: var(--primary); color: var(--primary); font-weight: 600;">
+                &#128172; <span data-fr="Ecrire a IRIS" data-en="Message IRIS">Ecrire a IRIS</span>
             </a>
         </div>
     </div>
