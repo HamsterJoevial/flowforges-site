@@ -161,12 +161,14 @@
     }
     .card-icon.teal { background: var(--primary-light); }
     .card-icon.red { background: #FFEBEE; }
+    .card-icon.green { background: #E8F5E9; }
     .card-status {
       font-family: 'JetBrains Mono', monospace; font-size: 0.68rem;
       font-weight: 700; padding: 4px 10px; border-radius: 20px; letter-spacing: 0.5px;
     }
     .card-status.beta { background: var(--accent-light); color: #92660A; border: 1px solid rgba(212,168,67,0.3); }
     .card-status.soon { background: #E8F4F7; color: #0D6E8A; border: 1px solid rgba(13,110,138,0.25); }
+    .card-status.building { background: #E8F5E9; color: #2E7D32; border: 1px solid rgba(46,125,50,0.25); }
     .card-name { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.5px; }
     .card-tagline { font-size: 0.9rem; color: var(--text-secondary); flex: 1; }
     .card-cta {
@@ -178,6 +180,8 @@
     .card-cta.teal-btn:hover { background: var(--primary-dark); }
     .card-cta.red-btn { background: #C62828; color: #fff; }
     .card-cta.red-btn:hover { background: #B71C1C; }
+    .card-cta.green-btn { background: #2E7D32; color: #fff; }
+    .card-cta.green-btn:hover { background: #1B5E20; }
 
     /* STUDIO */
     .studio {
@@ -274,6 +278,16 @@
       <div class="card-name">VigieContrat</div>
       <div class="card-tagline">Vos contrats analysés en 30 secondes.</div>
       <a class="card-cta red-btn" href="vigiecontrat/index.html">Rejoindre la bêta →</a>
+    </div>
+
+    <div class="app-card dicteosante">
+      <div class="card-top">
+        <div class="card-icon green">🎙️</div>
+        <span class="card-status building">En construction</span>
+      </div>
+      <div class="card-name">DictéoSanté</div>
+      <div class="card-tagline">Tu dictes, l'IA rédige ton compte-rendu en 30 secondes.</div>
+      <span class="card-cta green-btn" style="cursor:default; opacity:0.7;">Bientôt disponible</span>
     </div>
 
   </div>
