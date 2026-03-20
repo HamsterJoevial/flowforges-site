@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Politique de confidentialité — DictéoSanté</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      line-height: 1.7;
+      padding: 2rem 1rem;
+    }
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    header {
+      margin-bottom: 3rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #1e293b;
+    }
+    header a {
+      color: #60a5fa;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-top: 1rem;
+      color: #f1f5f9;
+    }
+    .updated {
+      color: #64748b;
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+    }
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #f1f5f9;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+    p { color: #cbd5e1; margin-bottom: 0.75rem; }
+    ul {
+      color: #cbd5e1;
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    ul li { margin-bottom: 0.4rem; }
+    .highlight {
+      background: #1e293b;
+      border-left: 3px solid #3b82f6;
+      padding: 1rem 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin: 1.25rem 0;
+    }
+    .highlight p { margin: 0; color: #93c5fd; }
+    a { color: #60a5fa; }
+    footer {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #1e293b;
+      color: #475569;
+      font-size: 0.875rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="https://hamsterjoevial.github.io/flowforges-site/">← FlowForges</a>
+      <h1>Politique de confidentialité</h1>
+      <p class="updated">Dernière mise à jour : mars 2026</p>
+    </header>
+
+    <div class="highlight">
+      <p>DictéoSanté est un outil d'aide à la rédaction de comptes rendus médicaux. Les documents générés sont des brouillons. Le professionnel de santé est seul responsable de leur validation avant tout usage clinique.</p>
+    </div>
+
+    <h2>1. Qui sommes-nous</h2>
+    <p>DictéoSanté est édité par FlowForges, représenté par Joffrey Desforges. Pour toute question relative à vos données personnelles, contactez-nous à : <a href="mailto:contact@flowforges.fr">contact@flowforges.fr</a></p>
+
+    <h2>2. Données collectées</h2>
+    <p>Lors de l'utilisation de DictéoSanté, nous collectons les données suivantes :</p>
+    <ul>
+      <li><strong>Données de compte :</strong> adresse e-mail, identifiant utilisateur (via Supabase Auth)</li>
+      <li><strong>Données de profil :</strong> profession choisie lors de l'onboarding (kinésithérapeute, IDEL, orthophoniste, etc.) — stockées localement sur l'appareil et dans votre profil Supabase</li>
+      <li><strong>Transcriptions vocales :</strong> l'audio de vos dictées est traité localement sur l'appareil par le moteur de reconnaissance vocale natif iOS (SFSpeechRecognizer). <strong>Aucun fichier audio n'est envoyé ni stocké sur nos serveurs.</strong> Seul le texte transcrit est utilisé.</li>
+      <li><strong>Texte des comptes rendus :</strong> le texte transcrit est transmis à notre service d'analyse pour générer le CR structuré. Les CR générés sont conservés dans votre historique local et dans votre compte Supabase.</li>
+      <li><strong>Données d'abonnement :</strong> historique d'abonnement Stripe (plan actif, dates), géré par Stripe — nous n'accédons pas à vos informations bancaires</li>
+      <li><strong>Données d'essai :</strong> date de début d'essai, conservée localement sur l'appareil</li>
+    </ul>
+
+    <div class="highlight">
+      <p><strong>Ce que nous ne collectons jamais :</strong> données nominatives des patients (nom, prénom, numéro de sécurité sociale, date de naissance), fichiers audio, données de localisation.</p>
+    </div>
+
+    <h2>3. Pourquoi nous collectons ces données</h2>
+    <ul>
+      <li>Fournir le service de transcription et de génération de comptes rendus</li>
+      <li>Conserver votre historique de CR dans l'application</li>
+      <li>Adapter les templates de CR à votre profession</li>
+      <li>Gérer votre période d'essai et votre abonnement</li>
+      <li>Vous envoyer des rappels de fin d'essai (notifications locales, sans données transmises)</li>
+    </ul>
+
+    <h2>4. Comment nous protégeons vos données</h2>
+    <p>Le texte transcrit de vos dictées est transmis à l'API Claude (Anthropic) via notre proxy sécurisé (Supabase Edge Function) pour générer le compte rendu structuré. <strong>Votre identifiant utilisateur n'est pas transmis à Anthropic.</strong></p>
+    <p>Anthropic traite ces données conformément à sa propre politique de confidentialité, disponible sur <a href="https://www.anthropic.com/privacy" target="_blank">anthropic.com/privacy</a>. Le texte n'est pas conservé par Anthropic au-delà du traitement.</p>
+    <p>Vos données de compte et vos CR sont stockés dans Supabase avec les protections de sécurité standard (chiffrement en transit, authentification JWT).</p>
+
+    <h2>5. Durée de conservation</h2>
+    <p>Vos comptes rendus sont conservés dans votre historique tant que votre compte est actif.</p>
+    <p>Les données de votre compte (e-mail, profil, historique) sont conservées tant que votre compte est actif. En cas de suppression de compte, la suppression des données est effective dans un délai maximum de <strong>90 jours</strong> conformément à l'article 17 du RGPD.</p>
+    <p>Les transcriptions vocales sont traitées localement sur l'appareil et ne sont jamais stockées sur nos serveurs.</p>
+
+    <h2>6. Vos droits (RGPD)</h2>
+    <p>Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants :</p>
+    <ul>
+      <li><strong>Accès :</strong> consulter les données que nous détenons sur vous</li>
+      <li><strong>Rectification :</strong> corriger des données inexactes</li>
+      <li><strong>Suppression :</strong> demander la suppression de votre compte et de toutes vos données</li>
+      <li><strong>Portabilité :</strong> recevoir vos données dans un format lisible</li>
+      <li><strong>Opposition :</strong> vous opposer à certains traitements</li>
+    </ul>
+    <p>Pour exercer ces droits, écrivez à : <a href="mailto:contact@flowforges.fr">contact@flowforges.fr</a></p>
+
+    <h2>7. Partage des données et transferts internationaux</h2>
+    <p>Nous ne vendons pas vos données. Nous partageons uniquement avec :</p>
+    <ul>
+      <li><strong>Supabase</strong> (hébergeur de base de données, UE) — stockage sécurisé de votre compte, profil et historique de CR</li>
+      <li><strong>Anthropic / Claude API</strong> (États-Unis) — le texte transcrit est transmis pour générer le CR structuré, puis supprimé conformément à leur politique. Votre identifiant utilisateur n'est pas transmis.</li>
+      <li><strong>Stripe</strong> (États-Unis) — gestion des paiements et abonnements. Stripe traite les données de facturation conformément à sa politique PCI-DSS. Nous ne stockons pas vos données de carte bancaire.</li>
+    </ul>
+    <p>Anthropic et Stripe sont des prestataires établis aux États-Unis. Ces transferts hors de l'Union Européenne sont encadrés par des clauses contractuelles types (Standard Contractual Clauses) conformément à l'article 46 du RGPD.</p>
+
+    <h2>8. Traitement vocal et conformité iOS</h2>
+    <p>DictéoSanté utilise le moteur de reconnaissance vocale natif d'Apple (SFSpeechRecognizer) pour la transcription. Ce traitement s'effectue <strong>localement sur votre appareil</strong>, sans transfert audio vers des serveurs externes.</p>
+    <p>L'accès au microphone et à la reconnaissance vocale est soumis à votre autorisation explicite lors du premier lancement. Vous pouvez révoquer ces autorisations à tout moment dans les Réglages iOS.</p>
+
+    <h2>9. Cookies et traceurs</h2>
+    <p>L'application mobile DictéoSanté n'utilise pas de cookies. Elle utilise le stockage local de l'appareil (SharedPreferences) pour maintenir votre session, votre profession et votre historique local.</p>
+
+    <h2>10. Modifications</h2>
+    <p>Cette politique peut être mise à jour. En cas de changement significatif, vous serez notifié via l'application. La date de mise à jour est toujours indiquée en haut de cette page.</p>
+
+    <h2>11. Contact</h2>
+    <p>Pour toute question : <a href="mailto:contact@flowforges.fr">contact@flowforges.fr</a></p>
+    <p>FlowForges — France</p>
+
+    <footer>
+      © 2026 FlowForges · DictéoSanté · <a href="cgu.html">Conditions d'utilisation</a>
+    </footer>
+  </div>
+</body>
+</html>
