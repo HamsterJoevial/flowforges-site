@@ -11,12 +11,17 @@
     <meta property="og:title" content="PIVOT — L'app pour documenter vos visites terrain">
     <meta property="og:description" content="Photos annotées, rapports PDF, assistant IA. Documentez vos visites terrain en quelques minutes. Disponible sur iOS et Android.">
 
-    <!-- Smart redirect mobile -->
+    <!-- Smart redirect mobile: update nav button for Android -->
     <script>
       (function() {
         var ua = navigator.userAgent || '';
         if (/android/i.test(ua)) {
-          window.location.replace('https://play.google.com/store/apps/details?id=com.joffrey.pivot');
+          document.addEventListener('DOMContentLoaded', function() {
+            var btn = document.getElementById('nav-dl-btn');
+            if (btn) {
+              btn.href = 'https://play.google.com/store/apps/details?id=com.joffrey.pivot';
+            }
+          });
         }
       })();
     </script>
