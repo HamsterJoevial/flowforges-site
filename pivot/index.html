@@ -368,6 +368,45 @@
             color: #7A5800;
         }
 
+        /* ---- ADAPT ---- */
+        .adapt-section { background: var(--primary-bg); }
+        .adapt-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 52px;
+        }
+        .adapt-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 28px 24px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        .adapt-card--highlight {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(13, 110, 138, 0.08), var(--shadow-md);
+        }
+        .adapt-icon { font-size: 36px; display: block; margin-bottom: 14px; }
+        .adapt-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--text); }
+        .adapt-tags { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 14px; }
+        .adapt-tag {
+            font-size: 11px; font-weight: 600;
+            padding: 3px 10px; border-radius: 100px;
+            background: var(--surface); border: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        .adapt-card--highlight .adapt-tag {
+            background: var(--primary-bg); border-color: var(--primary); color: var(--primary);
+        }
+        .adapt-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
+        .adapt-note {
+            text-align: center; margin-top: 36px;
+            font-size: 15px; font-weight: 600; color: var(--primary);
+        }
+        @media (max-width: 640px) { .adapt-grid { grid-template-columns: 1fr; } }
+
         /* ---- PRICING ---- */
         .pricing-section { background: var(--surface); }
         .pricing-grid {
@@ -746,6 +785,50 @@
                 <span class="feature-tag">Gratuit</span>
             </div>
         </div>
+    </div>
+</section>
+
+<!-- ADAPT -->
+<section class="adapt-section">
+    <div class="container">
+        <p class="section-label">Personnalisation</p>
+        <h2 class="section-title">Le template par défaut montre tout.<br>Votre config sera la vôtre.</h2>
+        <p class="section-desc">PIVOT arrive avec un modèle complet. Si ça semble beaucoup au premier coup d'œil — c'est normal. En pratique, la plupart des utilisateurs réduisent ça à 2 ou 3 catégories et quelques champs. Vous supprimez ce qui ne vous sert pas, vous gardez ce qui compte.</p>
+
+        <div class="adapt-grid">
+            <div class="adapt-card">
+                <span class="adapt-icon">&#127968;</span>
+                <div class="adapt-title">Agent immobilier</div>
+                <div class="adapt-tags">
+                    <span class="adapt-tag">2 catégories</span>
+                    <span class="adapt-tag">6 champs</span>
+                    <span class="adapt-tag">1 checklist</span>
+                </div>
+                <div class="adapt-desc">Extérieur · Intérieur. État général, points de vigilance, DPE. Simple, rapide, envoyé depuis la voiture.</div>
+            </div>
+            <div class="adapt-card adapt-card--highlight">
+                <span class="adapt-icon">&#128295;</span>
+                <div class="adapt-title">Inspecteur technique</div>
+                <div class="adapt-tags">
+                    <span class="adapt-tag">4 catégories</span>
+                    <span class="adapt-tag">12 champs</span>
+                    <span class="adapt-tag">3 checklists</span>
+                </div>
+                <div class="adapt-desc">Structure, toiture, réseaux, finitions. Chaque catégorie avec ses photos et sa checklist dédiée.</div>
+            </div>
+            <div class="adapt-card">
+                <span class="adapt-icon">&#128205;</span>
+                <div class="adapt-title">Commercial terrain</div>
+                <div class="adapt-tags">
+                    <span class="adapt-tag">1 catégorie</span>
+                    <span class="adapt-tag">4 champs</span>
+                    <span class="adapt-tag">PDF 1 page</span>
+                </div>
+                <div class="adapt-desc">Client, localisation, observations, photos clés. Un rapport d'une page, prêt à envoyer depuis le parking.</div>
+            </div>
+        </div>
+
+        <p class="adapt-note">PIVOT s'adapte à votre métier — pas l'inverse.</p>
     </div>
 </section>
 
